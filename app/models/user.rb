@@ -9,4 +9,5 @@ class User < ApplicationRecord
   validates :description, length: { minimum: 50 }
   validates :cooking_level, inclusion: {in: ["beginner", "some experience", "advanced"]}
   validates :interested_in, inclusion: {in: ["only friends", "open to anything"]}
+  has_many :recipes
 end

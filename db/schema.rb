@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_091358) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_29_121108) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,55 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_091358) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "cuisines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "diets", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.time "length"
+    t.string "level_of_difficulty", default: [], array: true
+    t.bigint "cuisine_id", null: false
+    t.bigint "user_id", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["cuisine_id"], name: "index_recipes_on_cuisine_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
+  end
+
+  create_table "recipes_diets", force: :cascade do |t|
+    t.bigint "diet_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["diet_id"], name: "index_recipes_diets_on_diet_id"
+    t.index ["recipe_id"], name: "index_recipes_diets_on_recipe_id"
+  end
+
+  create_table "recipes_ingredients", force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_recipes_ingredients_on_ingredient_id"
+    t.index ["recipe_id"], name: "index_recipes_ingredients_on_recipe_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -63,6 +112,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_091358) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_cuisines", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "cuisine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cuisine_id"], name: "index_users_cuisines_on_cuisine_id"
+    t.index ["user_id"], name: "index_users_cuisines_on_user_id"
+  end
+
+  create_table "users_diets", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "diet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["diet_id"], name: "index_users_diets_on_diet_id"
+    t.index ["user_id"], name: "index_users_diets_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "recipes", "cuisines"
+  add_foreign_key "recipes", "users"
+  add_foreign_key "recipes_diets", "diets"
+  add_foreign_key "recipes_diets", "recipes"
+  add_foreign_key "recipes_ingredients", "ingredients"
+  add_foreign_key "recipes_ingredients", "recipes"
+  add_foreign_key "users_cuisines", "cuisines"
+  add_foreign_key "users_cuisines", "users"
+  add_foreign_key "users_diets", "diets"
+  add_foreign_key "users_diets", "users"
 end
