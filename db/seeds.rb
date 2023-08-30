@@ -34,6 +34,6 @@ User.create!(nickname: "Gonzalo", email: "gonzalo@test.com", password: "123456",
 
 Recipe.create!(title: "Gaspacho", description: "Lorem", length: 1, level_of_difficulty: "easy", cuisine_id: Cuisine.first, user_id: User.first)
 Recipe.create!(title: "Caccio e pepe", description: "Ipsum", length: 2, level_of_difficulty: "easy", cuisine_id: rand(0..4), user_id: User.last)
-Recipe.create!(title: "Burrito", description: "Description goes here", length: 3, level_of_difficulty: "medium", Cuisine.first, user_id: User.last)
+Recipe.create!(title: "Burrito", description: "Description goes here", length: 3, level_of_difficulty: "medium", cuisine_id: Cuisine.first, user_id: User.last)
 
 Recipe.create!(title: "Bacalau", description: "Best of Brazil", length: 7, level_of_difficulty: "hard", cuisine_id: Cuisine.last, user_id: User.first)
