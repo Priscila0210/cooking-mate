@@ -4,7 +4,11 @@ class PagesController < ApplicationController
   def home
   end
 
-  def profile
+  def dashboard
+    @user = current_user
+    @recipes = current_user.recipes
+    @recipe = Recipe.new
+
   end
 
   def dashboard
