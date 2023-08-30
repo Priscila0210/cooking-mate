@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <div data-controller="toggle">
+        <button class="btn btn-primary btn-block rounded-pill" data-action="click->toggle#recipe">Add a New Recipe</button>
+        <div data-toggle-target="togglableElement" class="d-none">
+          <%= render "recipes/form", recipe: @recipe %>
+        </div>
+      </div>
+    </div>
+    <div class="card-body mb-5">
+      <h3 class="mb-4">Your Recipes</h3>
+      <% @user.recipes.each do |recipe| %>
+        <div class="recipe-item border p-3 mb-4">
+          <h4><strong>Name:</strong> <%= recipe.title %></h4>
+          <p><strong>Description:</strong> <%= recipe.description %></p>
+          <p><strong>Level of Difficulty:</strong> <%= recipe.level_of_difficulty %></p>
+          <p><strong>Length:</strong> <%= recipe.length %></p>
+          <%= link_to "Delete" ,
+                      recipe_path(recipe),
+                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                      class: "btn btn-primary btn-block rounded-pill mb-5" %>
+           <div data-controller="toggle" data-id="<%= @recipe.id %>">
+             <button class="btn btn-primary btn-block rounded-pill" data-action="click->toggle#editRecipe">Edit</button>
+              <div data-toggle-target="editRecipe" class="d-none">
+                <%= render "recipes/editform", recipe: recipe %>
+              </div>
+           </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
