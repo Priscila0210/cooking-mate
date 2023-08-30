@@ -4,5 +4,5 @@ class Recipe < ApplicationRecord
   validates :title, presence: true
   # validates :length, presence: true
   validates :description, presence: true
-  # validates :level_of_difficulty, presence: true, inclusion: { in: ["easy", "medium", "hard"] }
+  validates :level_of_difficulty, presence: true, inclusion: { in: ["easy", "medium", "hard"] }
 end
