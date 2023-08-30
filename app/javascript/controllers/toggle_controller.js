@@ -2,11 +2,18 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["togglableElement", "editRecipe"]
+  static targets = ["togglableElement", "editRecipe", "details"]
   static values = { id: Number };
 
 
   connect() {
+    this.toggled = false
+  }
+
+  updatetoggle(){
+    this.toggled = !this.toggled
+    console.log(this.toggled)
+    this.detailsTarget.classList.toggle("d-none")
   }
 
   recipe() {
@@ -33,7 +40,7 @@ export default class extends Controller {
       }
     })
     .then(data => {
-      
+
     })
     .catch(error => {
       console.error("Error updating recipe:", error);
