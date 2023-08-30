@@ -4,6 +4,6 @@
   <% if bookings.count == 0 %>
     <%= render "booking", recipe: recipe, booking: @booking%>
   <% else %>
-    <button><%= ["pending", "confirmed", "declined"][bookings.last.status] %></button>
+    <button><%= bookings.last.status %></button>
   <% end %>
 <% end %>
