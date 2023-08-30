@@ -6,8 +6,18 @@
     <%= f.input :title %>
     <%= f.input :length %>
     <%= f.input :description %>
-     <%= f.input :cuisine, collection: Cuisine.all %>
-      <%= f.input :level_of_difficulty, collection: ['easy', 'medium', 'hard']%>
+    <%= f.input :cuisine, collection: Cuisine.all %>
+    <%= f.input :level_of_difficulty, collection: ['easy', 'medium', 'hard']%>
+    <%= f.simple_fields_for :recipes_ingredients do |i| %>
+    <%= i.input :ingredient, collection: Ingredient.all,
+                input_html: { multiple: true },
+                wrapper_html: { class: 'form-group' }, :as => :check_boxes, include_hidden: false  %>
+    <% end %>
+    <%= f.simple_fields_for :recipes_diets do |i| %>
+    <%= i.input :diet, collection: Diet.all,
+                input_html: { multiple: true },
+                wrapper_html: { class: 'form-group' }, :as => :check_boxes, include_hidden: false  %>
+    <% end %>
 
   <div class="form-actions">
     <%= f.button :submit, class: "btn btn-primary btn-block border border-dark rounded-pill" %>
