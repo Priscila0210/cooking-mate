@@ -2,6 +2,9 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_recipe, only: %i[show edit update destroy]
 
+  def index
+  end
+
   def new
   end
 
