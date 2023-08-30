@@ -5,15 +5,18 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @recipe = Recipe.find(params[:recipe_id])
-    @booking.recipe = @recipe
-    @booking.user = current_user
-    if @booking.save
-      redirect_to recipes_path, notice: "Booking was successfully created."
-    else
-      render :index, status: :unprocessable_entity
+    dates = params[:booking][:date].split(", ")
+    dates.each do |date|
+      @booking = Booking.new(date: date)
+      @recipe = Recipe.find(params[:recipe_id])
+      @booking.recipe = @recipe
+      @booking.user = current_user
+      @booking.status = 0
+      if !@booking.save
+        render :index, status: :unprocessable_entity
+      end
     end
+    redirect_to recipes_path, notice: "Booking was successfully created."
   end
 
   private
