@@ -8,11 +8,12 @@
 
 require 'faker'
 
-Cuisine.destroy_all
+Recipe.destroy_all
 User.destroy_all
+Cuisine.destroy_all
 Diet.destroy_all
 Ingredient.destroy_all
-Recipe.destroy_all
+
 
 Cuisine.create!(name: "Spanish")
 Cuisine.create!(name: "Italian")
@@ -32,8 +33,8 @@ User.create!(nickname: "Marcia", email: "marcia@test.com", password: "123456", a
 User.create!(nickname: "Gonzalo", email: "gonzalo@test.com", password: "123456", address: "Roma", age: 40, description: Faker::Lorem.paragraph_by_chars(number: 51, supplemental: false), interested_in: "open to anything", cooking_level: "some experience", availability: ["weekdays", "weekend"])
 
 
-Recipe.create!(title: "Gaspacho", description: "Lorem", length: 1, level_of_difficulty: "easy", cuisine_id: Cuisine.first, user_id: User.first)
-Recipe.create!(title: "Caccio e pepe", description: "Ipsum", length: 2, level_of_difficulty: "easy", cuisine_id: rand(0..4), user_id: User.last)
-Recipe.create!(title: "Burrito", description: "Description goes here", length: 3, level_of_difficulty: "medium", cuisine_id: Cuisine.first, user_id: User.last)
+Recipe.create!(title: "Gaspacho", description: "Lorem", length: 1, level_of_difficulty: "easy", cuisine: Cuisine.first, user: User.first)
+Recipe.create!(title: "Caccio e pepe", description: "Ipsum", length: 2, level_of_difficulty: "easy", cuisine: Cuisine.second, user: User.last)
+Recipe.create!(title: "Burrito", description: "Description goes here", length: 3, level_of_difficulty: "medium", cuisine: Cuisine.first, user: User.last)
 
-Recipe.create!(title: "Bacalau", description: "Best of Brazil", length: 7, level_of_difficulty: "hard", cuisine_id: Cuisine.last, user_id: User.first)
+Recipe.create!(title: "Bacalau", description: "Best of Brazil", length: 7, level_of_difficulty: "hard", cuisine: Cuisine.last, user: User.first)
