@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @booking = Booking.new
   end
 
   def create

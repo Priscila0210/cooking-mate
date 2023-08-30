@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resources :recipes, only: %i[create update]
   end
+  resources :recipes, only: [] do
+    resources :bookings, only: %i[new create ]
+  end
   resources :recipes, only: %i[index show destroy]
 end

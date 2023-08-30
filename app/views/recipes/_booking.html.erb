@@ -1,0 +1,11 @@
+<%= simple_form_for [ recipe, booking] do |f| %>
+  <div class="form-inputs">
+    <%= f.input :date,
+                 as: :string,
+                 input_html: { data: { controller: "datepicker" } } %>
+
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-primary btn-block border border-dark rounded-pill" %>
+    </div>
+  </div>
+<% end %>

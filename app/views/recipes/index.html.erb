@@ -1,3 +1,8 @@
 <% @recipes.each do |recipe| %>
-<h2><%= recipe.title %></h2>
+  <h2><%= recipe.title %></h2>
+  <% if Booking.includes("recipes").where(recipe: recipe, user: current_user).count == 0 %>
+    <%= render "booking", recipe: recipe, booking: @booking%>
+  <% else %>
+    <button>Already booked</button>
+  <% end %>
 <% end %>
