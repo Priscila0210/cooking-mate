@@ -5,3 +5,29 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require 'faker'
+
+Cuisine.create!(name: "Spanish")
+Cuisine.create!(name: "Italian")
+Cuisine.create!(name: "French")
+Cuisine.create!(name: "Brazilian")
+
+Diet.create!(name: "Vegetarian")
+Diet.create!(name: "Vegan")
+Diet.create!(name: "Glutenfree")
+
+Ingredient.create!(name: "Zucchini")
+Ingredient.create!(name: "Mushroom")
+Ingredient.create!(name: "Pumpkin")
+
+
+User.create!(nickname: "Marcia", email: "marcia@test.com", password: "123456", address: "Barcelona", age: 35, description: Faker::Lorem.paragraph_by_chars(number: 56, supplemental: false), interested_in: "only friends", cooking_level: "beginner", availability: ["weekdays"])
+User.create!(nickname: "Gonzalo", email: "gonzalo@test.com", password: "123456", address: "Roma", age: 40, description: Faker::Lorem.paragraph_by_chars(number: 51, supplemental: false), interested_in: "open to anything", cooking_level: "some experience", availability: ["weekdays", "weekend"])
+
+
+Recipe.create!(title: "Gaspacho", description: "Lorem", length: 1, level_of_difficulty: "easy", cuisine_id: 1, user_id: 1)
+Recipe.create!(title: "Caccio e pepe", description: "Ipsum", length: 2, level_of_difficulty: "easy", cuisine_id: 2, user_id: 2)
+Recipe.create!(title: "Burrito", description: "Description goes here", length: 3, level_of_difficulty: "medium", cuisine_id: 1, user_id: 2)
+
+Recipe.create!(title: "Bacalau", description: "Best of Brazil", length: 7, level_of_difficulty: "hard", cuisine_id: 4, user_id: 1)
