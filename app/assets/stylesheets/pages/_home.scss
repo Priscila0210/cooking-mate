@@ -6,7 +6,7 @@
 // Specific CSS for your home-page
 body {
   // background-color: #85E6C5;
-  background-color: whitesmoke;
+  background-color:black;
 
 }
 
@@ -19,7 +19,7 @@ body {
   font-weight: lighter;
   opacity: 0.6;
   transition: opacity 0.3s ease;
-  
+
 }
 
 
@@ -58,17 +58,17 @@ body {
 
 .card-category {
   display: grid;
-  // grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 5px;
   color: black;
   border-radius: 25px;
   background: white;
   transition: background 0.3s ease;
   border: 1px solid #4A4A4A;
-  width: 300px;
-  height: 400px;
   place-items: center;
+  padding: 10px 10px;
+  height: 400px;
 
+  width: 100%;
 
 
 }
@@ -76,8 +76,7 @@ body {
 .d-flex {
   font-size: 12px;
   text-align: justify;
-  margin-top: 150px;
-  margin-right: 50px;
+
 }
 
 
@@ -85,7 +84,9 @@ body {
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 250px 0;
+  padding: 2%;
+  align-items: flex-start;
+  height: 100vh;
   // align-items: first baseline;
 }
 
@@ -95,7 +96,9 @@ body {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
+  text-align: center;
 }
+
 
 .banner p {
   font-size: 20px;
