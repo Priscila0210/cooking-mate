@@ -1,10 +1,13 @@
 
 <%# marcel work hard here !!! %>
 
-
-
-<div class="banner d-flex justify-content-end" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dzltofqgu/image/upload/v1693418987/shutterstock-1565551219_tullz8.jpg);">
-    <a class="btn btn-ghost" href="#">Log in</a>
+<% if !user_signed_in? %>
+<div class="banner d-flex justify-content-end style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dzltofqgu/image/upload/v1693286265/cld-sample-4.jpg);">
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-ghost justify-content-end" %>
+    <div class= "tagline d-flex justify-content-center align-items-center">
+      <h1>Cooking Mate</h1>
+       <%= link_to "Join the Community", new_user_registration_path, class:"btn btn-ghost" %>
+    </div>
 
 </div>
 
@@ -12,10 +15,6 @@
 
 
 
-<div class="d-flex flex-column align-items-center my-4">
-  <h1>Cooking Mate</h1>
-  <a class="btn btn-ghost mb-4" href="#">Join the Community</a>
-</div>
 
 
   <div class="d-flex flex-row align-items-center mx-4">
@@ -59,5 +58,27 @@
       Today in our house we are teaching our friends and neighbors how to cook.
     </div>
 
+
   </div>
 </div>
+    <% else %>
+ <div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+<% @recipes.each do |recipe| %>
+  <h2><%= recipe.title %></h2>
+  <div data-controller="toggle">
+    <button data-action="click->toggle#seeMore">See more</button>
+    <div data-toggle-target="seeMore" class="d-none">
+      <%= render "recipes/more", recipe: recipe %>
+    </div>
+  </div>
+<% end %>
+ <% end %>

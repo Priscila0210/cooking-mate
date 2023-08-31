@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_121108) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_30_122509) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_121108) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.date "date"
+    t.integer "status"
+    t.bigint "recipe_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_bookings_on_recipe_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_chatrooms_on_booking_id"
+  end
+
   create_table "cuisines", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -60,9 +78,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_121108) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.time "length"
-    t.string "level_of_difficulty", default: [], array: true
+    t.string "level_of_difficulty"
     t.bigint "cuisine_id", null: false
     t.bigint "user_id", null: false
     t.text "description"
@@ -132,6 +169,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_121108) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "recipes"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "chatrooms", "bookings"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "recipes", "cuisines"
   add_foreign_key "recipes", "users"
   add_foreign_key "recipes_diets", "diets"
