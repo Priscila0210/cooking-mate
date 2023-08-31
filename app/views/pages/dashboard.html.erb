@@ -1,7 +1,7 @@
 <div class="container mt-4">
 <h1 class="mt-2">Hello <%= current_user.nickname %>!</h1>
   <div class="card">
-    <h3 class="mb-4" id="recipes">My Recipes</h3>
+
     <div class="card-header d-flex justify-content-between align-items-center">
       <h3 id="recipes">My Recipes</h3>
       <div data-controller="toggle">
@@ -20,7 +20,7 @@
             <h4><strong>Title:</strong> <%= recipe.title %></h4>
             <p><strong>Description:</strong> <%= recipe.description %></p>
             <p><strong>Level of Difficulty:</strong> <%= recipe.level_of_difficulty %></p>
-            <p><strong>Cuisine:</strong> <%= recipe.cuisine %></p>
+            <p><strong>Cuisine:</strong> <%= recipe.cuisine.name %></p>
             <p><strong>Preparation time:</strong> <%= recipe.length %></p>
             <%= link_to "" ,
                         recipe_path(recipe),
