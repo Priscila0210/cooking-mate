@@ -1,20 +1,43 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+ <title>Login</title>
+  <!-- Include Bootstrap CSS link here -->
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div class="card-body p-5">
+            <h2 class="card-title text-center mb-4">Log in</h2>
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'mt-4' }) do |f| %>
+              <div class="form-group">
+                <%= f.input :email,
+                            required: false,
+                            autofocus: true,
+                            label: 'Email',
+                            label_html: { class: 'form-label' },
+                            input_html: { class: 'form-control', autocomplete: 'email' } %>
+              </div>
+              <div class="form-group">
+                <%= f.input :password,
+                            required: false,
+                            label: 'Password',
+                            label_html: { class: 'form-label' },
+                            input_html: { class: 'form-control', autocomplete: 'current-password' } %>
+              </div>
+              <% if devise_mapping.rememberable? %>
+                <div class="form-check mb-3">
+                  <%= f.input :remember_me, as: :boolean, label: 'Remember me', input_html: { class: 'form-check-input' } %>
+                </div>
+              <% end %>
+              <div class="text-center mt-4">
+                <%= f.button :submit, "Log in", class: 'btn btn-primary btn-lg' %>
+              </div>
+            <% end %>
+            <div class="text-center mt-3">
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

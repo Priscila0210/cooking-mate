@@ -1,10 +1,12 @@
 <div class="container mt-4">
 <h1 class="mt-2">Hello <%= current_user.nickname %>!</h1>
   <div class="card">
+    <h3 class="mb-4" id="recipes">My Recipes</h3>
     <div class="card-header d-flex justify-content-between align-items-center">
       <h3 id="recipes">My Recipes</h3>
       <div data-controller="toggle">
-        <button class="btn btn-primary btn-block rounded-pill" data-action="click->toggle#recipe">Add a New Recipe</button>
+        <button data-action="click->toggle#recipe"><i class="fa-solid fa-plus"></i></button>
+        <p>Add a new recipe!</p>
         <div data-toggle-target="togglableElement" class="d-none">
           <%= render "recipes/form", recipe: @recipe %>
         </div>
@@ -18,14 +20,15 @@
             <h4><strong>Title:</strong> <%= recipe.title %></h4>
             <p><strong>Description:</strong> <%= recipe.description %></p>
             <p><strong>Level of Difficulty:</strong> <%= recipe.level_of_difficulty %></p>
+            <p><strong>Cuisine:</strong> <%= recipe.cuisine %></p>
             <p><strong>Preparation time:</strong> <%= recipe.length %></p>
-            <%= link_to "Delete" ,
+            <%= link_to "" ,
                         recipe_path(recipe),
                         data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                        class: "btn btn-primary btn-block rounded-pill mb-5" %>
+                         class:"fa-solid fa-trash mb-5" %>
           </div>
            <div  data-id="<%= @recipe.id %>">
-             <button class="btn btn-primary btn-block rounded-pill" data-action="click->toggle#editRecipe click->toggle#updatetoggle" >Edit</button>
+             <button data-action="click->toggle#editRecipe click->toggle#updatetoggle" ><i class="fa-regular fa-pen-to-square"></i></button>
               <div data-toggle-target="editRecipe" class="d-none">
                 <%= render "recipes/editform", recipe: recipe %>
               </div>

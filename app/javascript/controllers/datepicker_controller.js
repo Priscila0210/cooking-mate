@@ -7,7 +7,7 @@ export default class extends Controller {
     flatpickr(this.element,
       {
         mode: "multiple",
-        dateFormat: "Y-m-d"
-    })
+        dateFormat: "Y-m-d",
+        minDate: new Date().fp_incr(1)   })
   }
 }
