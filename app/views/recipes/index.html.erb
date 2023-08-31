@@ -2,9 +2,9 @@
 <%# marcel work hard here !!! %>
 
 <% if !user_signed_in? %>
-<div class="banner d-flex justify-content-end" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dzltofqgu/image/upload/v1693286265/cld-sample-4.jpg');">
+<div class="mb-5 banner d-flex justify-content-end" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dzltofqgu/image/upload/v1693286265/cld-sample-4.jpg');">
     <%= link_to "Log in", new_user_session_path, class: "btn btn-ghost justify-content-end" %>
-    <div class= "tagline d-flex justify-content-center align-items-center">
+    <div class= "tagline justify-content-center align-items-center">
       <h1>Cooking Mate</h1>
        <%= link_to "Join the Community", new_user_registration_path, class:"btn btn-ghost" %>
     </div>
@@ -66,8 +66,8 @@
         %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
-    
-    
+
+
 <div class="cards-container">
   <% @recipes.each do |recipe| %>
     <div class="card mt-5">
@@ -92,4 +92,3 @@
   <% end %>
 </div>
  <% end %>
-

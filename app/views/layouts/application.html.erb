@@ -15,11 +15,10 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" if (current_user) %>
-
-   <%= render "shared/flashes" %>
-
-
-    <%= yield %>
+    <div>
+      <%= render "shared/navbar" if (current_user) %>
+      <%= render "shared/flashes" %>
+      <%= yield %>
+    </div>
   </body>
 </html>
