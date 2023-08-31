@@ -11,13 +11,14 @@ body {
 
 
 .btn-ghost {
-  color: #4A4A4A;
-  border: 1px solid #4A4A4A;
+  color: #03faf2;
+  border: 1px solid black;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
   opacity: 0.6;
   transition: opacity 0.3s ease;
+
 }
 
 
@@ -64,8 +65,10 @@ body {
   border: 1px solid #4A4A4A;
   place-items: center;
   padding: 10px 10px;
-  height: 400px;
+  height: 550px;
   width: 100%;
+  text-align: justify;
+
 
 }
 
@@ -79,6 +82,8 @@ body {
   align-items: flex-start;
   height: 100vh;
   // align-items: first baseline;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+    url('https://res.cloudinary.com/dzltofqgu/image/upload/v1693286265/cld-sample-4.jpg');
 }
 
 .banner h1 {
