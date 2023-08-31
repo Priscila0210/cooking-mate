@@ -10,8 +10,13 @@ class PagesController < ApplicationController
     @recipe = Recipe.new
   end
 
+
   def profile
     @user = current_user
-    
+
+    @recipe.recipes_ingredients.build
+    @recipe.recipes_diets.build
+
+
   end
 end

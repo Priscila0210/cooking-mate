@@ -1,17 +1,84 @@
 
-<%# marcel work here %>
+<%# marcel work hard here !!! %>
 
+<% if !user_signed_in? %>
+<div class="banner d-flex justify-content-end style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dzltofqgu/image/upload/v1693286265/cld-sample-4.jpg);">
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-ghost justify-content-end" %>
+    <div class= "tagline d-flex justify-content-center align-items-center">
+      <h1>Cooking Mate</h1>
+       <%= link_to "Join the Community", new_user_registration_path, class:"btn btn-ghost" %>
+    </div>
 
-
-<div align-itens="left">
-  <a class="btn btn-ghost" href="#">Log in</a>
 </div>
 
-<div align-itens="center">
-  <img src="<%= asset_path("logo.jpg")%>" alt="" width=150px height=150px>
-  <p></p>
-  <h1>Cooking Mate</h1>
+<%# <%= image_tag("logo.jpg") %> %>
 
-  <a class="btn btn-ghost" href="#">Join the Community</a>
+
+
+
+
+  <div class="d-flex flex-row align-items-center mx-4">
+
+    <div class="card-category mx-3">
+      <strong><mark>Eva Mendes</mark></strong>
+      <p></p>
+      As soon as I downloaded the app and put a profile picture with
+      my specialty in pasta and Italian food, I already received several
+      invitations to a culinary meeting. That happened 1 year ago,
+      until today we are still friends and we discovered that besides
+      food we have many other professional and personal affinities.
+      It was my best match!
+
+    </div>
+
+    <div class="card-category mx-3">
+        <strong><mark>Ricky Martin</mark></strong>
+        <p></p>
+      My name is Martin, my new friends here on the app call me Ricky Martin the Big Boss,
+      because I prepared for them one of my culinary specialties from Spain Paeja with baked seafood.
+      That's why I got the name Chief. Thank you very much friends, it was a wonderful time!
+    </div>
+
+    <div class="card-category mx-3">
+        <strong><mark>Emma Watson</mark></strong>
+        <p></p>
+        I have a hectic professional life, I'm always away from home so
+        I do my homework outside. But after discovering this app, I can gather friends
+        at my house and learn new special recipes from around the world.
+        I want to thank here my friend Ana Müller who for the moments and meals together,
+        thank you.
+    </div>
+
+    <div class="card-category mx-3">
+      <strong><mark>Alejandro Salles</mark></strong>
+      <p></p>
+      I would like to thank this one because it was through him that I had wonderful
+      moments with my friend Emma at that time. After a year on the app,
+      Emma and I got married and learned several new dishes.
+      Today in our house we are teaching our friends and neighbors how to cook.
+    </div>
+
+
+  </div>
 </div>
-
+    <% else %>
+ <div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+<% @recipes.each do |recipe| %>
+  <h2><%= recipe.title %></h2>
+  <div data-controller="toggle">
+    <button data-action="click->toggle#seeMore">See more</button>
+    <div data-toggle-target="seeMore" class="d-none">
+      <%= render "recipes/more", recipe: recipe %>
+    </div>
+  </div>
+<% end %>
+ <% end %>
