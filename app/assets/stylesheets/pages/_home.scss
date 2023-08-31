@@ -11,20 +11,27 @@ body {
 
 
 .btn-ghost {
-  color: #4A4A4A;
-  border: 1px solid ;
-  border-color:#85E6C5;
+
+  color: rgb(103, 237, 114);
+  border: 1.8px solid rgb(103, 237, 114);
+
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
   opacity: 0.6;
   transition: opacity 0.3s ease;
+  // width: 200px;
+
 }
 
 
 .btn-ghost:hover {
   opacity: 1;
-  color:#85E6C5;
+
+  color:#03faf2;
+  border: 1px solid;
+  /* font-size: 30px; */
+
 }
 
 .btn-flat {
@@ -69,8 +76,10 @@ title {
   border: 1px solid #4A4A4A;
   place-items: center;
   padding: 10px 10px;
-  height: 400px;
+  height: 550px;
   width: 100%;
+  text-align: justify;
+
 
 }
 
@@ -81,16 +90,17 @@ title {
   background-size: cover;
   background-position: center;
   padding: 2%;
-  align-items: flex-start;
   height: 100vh;
   // align-items: first baseline;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+    url('https://res.cloudinary.com/dzltofqgu/image/upload/v1693418987/shutterstock-1565551219_tullz8.jpg');
 }
 
 .banner h1 {
   margin: 0;
-  color: white;
+  color: #03faf2;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
+  font-size: 50px;
   font-weight: bold;
   text-align: center;
 }
@@ -103,8 +113,62 @@ title {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.h1 {
+  position: relative;
+  top: 400px;
+  right: 180px;
+  font-size: 40px;
+  color: #614BC3;
 
-.mark {
-  background-color: yellow;
-  color: black;
+
+}
+
+
+
+.arrows {
+  width: 60px;
+  height: 92px;
+  position: absolute;
+  left: 50%;
+  margin-left: -30px;
+  bottom: 20px;
+}
+
+.arrows path {
+  stroke: #03faf2;
+  fill: transparent;
+  stroke-width: 6px;
+  animation: arrow 2s infinite;
+  -webkit-animation: arrow 2s infinite;
+}
+
+@keyframes arrow
+{
+0% {opacity:0}
+40% {opacity:1}
+80% {opacity:0}
+100% {opacity:0}
+}
+
+@-webkit-keyframes arrow /*Safari and Chrome*/
+{
+0% {opacity:0}
+40% {opacity:1}
+80% {opacity:0}
+100% {opacity:0}
+}
+
+.arrows path.a1 {
+  animation-delay:-1s;
+  -webkit-animation-delay:-1s; /* Safari 和 Chrome */
+}
+
+.arrows path.a2 {
+  animation-delay:-0.5s;
+  -webkit-animation-delay:-0.5s; /* Safari 和 Chrome */
+}
+
+.arrows path.a3 {
+  animation-delay:0s;
+  -webkit-animation-delay:0s; /* Safari 和 Chrome */
 }
