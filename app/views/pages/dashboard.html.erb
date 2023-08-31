@@ -1,6 +1,8 @@
 <div class="container mt-4">
+<h1 class="mt-2">Hello <%= current_user.nickname %>!</h1>
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 id="recipes">My Recipes</h3>
       <div data-controller="toggle">
         <button class="btn btn-primary btn-block rounded-pill" data-action="click->toggle#recipe">Add a New Recipe</button>
         <div data-toggle-target="togglableElement" class="d-none">
@@ -9,11 +11,11 @@
       </div>
     </div>
     <div class="card-body mb-5">
-      <h3 class="mb-4">Your Recipes</h3>
+
       <% @user.recipes.each do |recipe| %>
         <div data-controller="toggle" class="recipe-item border p-3 mb-4">
           <div data-toggle-target="details">
-            <h4><strong>Name:</strong> <%= recipe.title %></h4>
+            <h4><strong>Title:</strong> <%= recipe.title %></h4>
             <p><strong>Description:</strong> <%= recipe.description %></p>
             <p><strong>Level of Difficulty:</strong> <%= recipe.level_of_difficulty %></p>
             <p><strong>Preparation time:</strong> <%= recipe.length %></p>
@@ -32,4 +34,9 @@
       <% end %>
     </div>
   </div>
+ <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 id="messages">My Messages</h3>
+
+
 </div>
