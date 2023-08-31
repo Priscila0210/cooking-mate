@@ -56,9 +56,10 @@ class RecipesController < ApplicationController
     # end
 
     respond_to do |format|
-
-      #new_ingredients = params[:recipe][:ingredient_ids].reject { |ingredient| @recipe.ingredients.pluck(:id).include?(ingredient) }
       @recipe.ingredient_ids = params[:recipe][:ingredient_ids]
+
+    # FOR OLIVIER
+    #   new_ingredients = params[:recipe][:ingredient_ids].reject { |ingredient| @recipe.ingredients.pluck(:id).include?(ingredient) }
     #   add new_ingredients
     #   remove the ones that were ticked
     #  @recipe.ingredients.each do |ingredient|
@@ -68,10 +69,7 @@ class RecipesController < ApplicationController
     #  end
     #  new_ingredients.each do |ingredient|
     #    if !ingredient.include?(@recipe.ingredients)
-    #      reci
-
-    #raise
-     #   recipes_ingredient.ingredient = Ingredient.find(ingredient)
+    #   recipes_ingredient.ingredient = Ingredient.find(ingredient)
 
       if @recipe.update(recipe_params)
         format.html { redirect_to recipe_path(@recipe), notice: "Recipe was successfully updated.", status: :see_other }
