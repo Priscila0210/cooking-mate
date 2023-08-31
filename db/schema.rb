@@ -99,7 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_122509) do
 
   create_table "recipes", force: :cascade do |t|
     t.time "length"
-    t.string "level_of_difficulty"
+    t.string "level_of_difficulty", default: [], array: true
     t.bigint "cuisine_id", null: false
     t.bigint "user_id", null: false
     t.text "description"
