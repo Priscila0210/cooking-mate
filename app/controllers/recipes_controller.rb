@@ -10,6 +10,8 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @booking = Booking.new
+    @prior_bookings = Booking.includes(:recipe)
   end
 
   def create
