@@ -18,7 +18,13 @@ class RecipesController < ApplicationController
     SQL
     @recipes = @recipes.joins(:ingredients).joins(:cuisines).joins(:diets).where(sql_subquery, query: "%#{params[:query]}%")
     end
+    @booking = Booking.new
+    @prior_bookings = Booking.includes(:recipe)
   end
+  
+  def edit
+  end
+
 
   def create
     @recipe = Recipe.new(recipe_params)
