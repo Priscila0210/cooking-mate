@@ -1,0 +1,13 @@
+<h4>Your future bookings!</h4>
+<div class="booking-list">
+  <% @mybookings.each do |booking| %>
+    <div class="booking-card">
+      <div class="user-nickname">
+        <h4><strong>future CookingMate:</strong> <%= User.find(booking.recipe.user_id).nickname %></h4>
+      </div>
+      <h4 class="booking-status"><strong>Status: </strong><%= booking.status %></h4>
+      <h4 class="recipe-title"><strong>You are gonna learn:</strong> <%= booking.recipe.title %></h4>
+      <h4 class="recipe-date"><strong>you booked this recipe on:</strong> <%= booking.date %></h4>
+    </div>
+  <% end %>
+</div>
