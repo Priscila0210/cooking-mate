@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :recipes, only: %i[create update]
   end
   resources :recipes, only: [] do
-    resources :bookings, only: %i[new create ]
+    resources :bookings, only: %i[new create ] do
+      resources :chatrooms, only: :show
+    end
   end
   resources :recipes, only: %i[index show destroy]
 end

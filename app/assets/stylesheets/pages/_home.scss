@@ -12,7 +12,8 @@ body {
 
 .btn-ghost {
   color: #4A4A4A;
-  border: 1px solid #4A4A4A;
+  border: 1px solid ;
+  border-color:#85E6C5;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
@@ -23,6 +24,7 @@ body {
 
 .btn-ghost:hover {
   opacity: 1;
+  color:#85E6C5;
 }
 
 .btn-flat {
@@ -53,6 +55,9 @@ body {
   color: white;
 }
 
+title {
+  color: #85E6C5;
+}
 
 .card-category {
   display: grid;
