@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:index]
-  # before_action :set_recipe, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: [:index]
+  before_action :set_recipe, only: %i[show edit update destroy]
 
   def new
   end
@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
     @booking = Booking.new
     @prior_bookings = Booking.includes(:recipe)
   end
-  
+
   def edit
   end
 
