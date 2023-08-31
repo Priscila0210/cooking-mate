@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
     @booking = Booking.new
     @prior_bookings = Booking.includes(:recipe)
   end
-  
+
   def edit
   end
 
