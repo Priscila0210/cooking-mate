@@ -18,7 +18,6 @@ export default class extends Controller {
 
   updatetoggle(){
     this.toggled = !this.toggled
-    console.log(this.toggled)
     this.detailsTarget.classList.toggle("d-none")
   }
 
@@ -28,6 +27,8 @@ export default class extends Controller {
 
   info() {
     this.infoElementTarget.classList.toggle("d-none")
+    console.log(this.infoElementTarget)
+
   }
 
   editRecipe() {
