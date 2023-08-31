@@ -6,8 +6,7 @@
 // Specific CSS for your home-page
 body {
   // background-color: #85E6C5;
-  background-color:black;
-
+  background-color:whitesmoke;
 }
 
 
@@ -19,7 +18,6 @@ body {
   font-weight: lighter;
   opacity: 0.6;
   transition: opacity 0.3s ease;
-
 }
 
 
@@ -67,9 +65,7 @@ body {
   place-items: center;
   padding: 10px 10px;
   height: 400px;
-
   width: 100%;
-
 
 }
 
@@ -100,4 +96,10 @@ body {
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+
+.mark {
+  background-color: yellow;
+  color: black;
 }
