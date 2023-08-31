@@ -12,6 +12,12 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  def index
+    @recipes = Recipe.all
+    @booking = Booking.new
+    @prior_bookings = Booking.includes(:recipe)
+  end
+
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user

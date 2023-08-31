@@ -11,17 +11,19 @@
     <div class="card-body mb-5">
       <h3 class="mb-4">Your Recipes</h3>
       <% @user.recipes.each do |recipe| %>
-        <div class="recipe-item border p-3 mb-4">
-          <h4><strong>Name:</strong> <%= recipe.title %></h4>
-          <p><strong>Description:</strong> <%= recipe.description %></p>
-          <p><strong>Level of Difficulty:</strong> <%= recipe.level_of_difficulty %></p>
-          <p><strong>Length:</strong> <%= recipe.length %></p>
-          <%= link_to "Delete" ,
-                      recipe_path(recipe),
-                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                      class: "btn btn-primary btn-block rounded-pill mb-5" %>
-           <div data-controller="toggle" data-id="<%= @recipe.id %>">
-             <button class="btn btn-primary btn-block rounded-pill" data-action="click->toggle#editRecipe">Edit</button>
+        <div data-controller="toggle" class="recipe-item border p-3 mb-4">
+          <div data-toggle-target="details">
+            <h4><strong>Name:</strong> <%= recipe.title %></h4>
+            <p><strong>Description:</strong> <%= recipe.description %></p>
+            <p><strong>Level of Difficulty:</strong> <%= recipe.level_of_difficulty %></p>
+            <p><strong>Preparation time:</strong> <%= recipe.length %></p>
+            <%= link_to "Delete" ,
+                        recipe_path(recipe),
+                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                        class: "btn btn-primary btn-block rounded-pill mb-5" %>
+          </div>
+           <div  data-id="<%= @recipe.id %>">
+             <button class="btn btn-primary btn-block rounded-pill" data-action="click->toggle#editRecipe click->toggle#updatetoggle" >Edit</button>
               <div data-toggle-target="editRecipe" class="d-none">
                 <%= render "recipes/editform", recipe: recipe %>
               </div>

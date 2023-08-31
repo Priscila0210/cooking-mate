@@ -1,4 +1,5 @@
 
+
 <%# marcel work hard here !!! %>
 
 
@@ -72,3 +73,14 @@
 
   </div>
 </div>
+
+<% @recipes.each do |recipe| %>
+  <h2><%= recipe.title %></h2>
+  <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
+  <% if bookings.count == 0 %>
+    <%= render "booking", recipe: recipe, booking: @booking%>
+  <% else %>
+    <button><%= bookings.last.status %></button>
+  <% end %>
+<% end %>
+
