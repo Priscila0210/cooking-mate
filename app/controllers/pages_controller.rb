@@ -11,9 +11,8 @@ class PagesController < ApplicationController
     @recipe.recipes_ingredients.build
     @recipe.recipes_diets.build
     @mybookings = Booking.where(user_id: current_user.id)
-    @my_recipes_ids = @mybookings.pluck(:id)
-    @my_requests = Booking.where(recipe_id: @my_recipes_ids)
-
+    @my_recipes_ids = Recipe.where(user: current_user).pluck(:id)
+    @my_requests = Booking.where(recipe_id: [1,4])
   end
 
 
