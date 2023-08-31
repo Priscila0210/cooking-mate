@@ -7,6 +7,10 @@ class RecipesController < ApplicationController
 
   def edit
   end
+  
+  def index
+    @recipes = Recipe.all
+  end
 
   def index
     @recipes = Recipe.all

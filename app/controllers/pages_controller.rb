@@ -8,5 +8,6 @@ class PagesController < ApplicationController
     @user = current_user
     @recipes = current_user.recipes
     @recipe = Recipe.new
+
   end
 end
