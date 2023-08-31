@@ -1,0 +1,10 @@
+<h4> Your Requests! </h4>
+
+<div class= "request-list">
+  <% @my_requests.each do |booking| %>
+    <h3><%= booking.user.nickname %></h3>
+    <h3><%= booking.date %></h3>
+    <h3><%= booking.status%></h3>
+  <% end %>
+
+</div>

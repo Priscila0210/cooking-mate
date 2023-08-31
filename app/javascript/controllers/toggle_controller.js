@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="toggle"
 export default class extends Controller {
 
-  static targets = ["togglableElement", "editRecipe", "details", "infoElement"]
+  static targets = ["togglableElement", "editRecipe", "details", "infoElement", "accordion", ]
 
 
   static values = { id: Number };
@@ -11,7 +11,10 @@ export default class extends Controller {
 
   connect() {
     this.toggled = false
+    console.log(this.accordionTargets)
+    this.activateaccordion()
   }
+
 
   updatetoggle(){
     this.toggled = !this.toggled
@@ -60,6 +63,24 @@ export default class extends Controller {
   toggleRecipe(event) {
     event.preventDefault();
     this.recipe();
+  }
+
+  activateaccordion(){
+
+    var acc = this.accordionTargets
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
   }
 
 }
