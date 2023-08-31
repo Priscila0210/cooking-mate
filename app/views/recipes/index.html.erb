@@ -3,19 +3,16 @@
 
 
 <% if !user_signed_in? %>
-<div class="banner d-flex justify-content-end" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dzltofqgu/image/upload/v1693286265/cld-sample-4.jpg);">
-    <a class="btn btn-ghost" href="#">Log in</a>
-    <div class= "tagline d-flex justify-content-center">
-      <h1>CookingMate</h1>
+<div class="banner d-flex mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dzltofqgu/image/upload/v1693286265/cld-sample-4.jpg);">
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-ghost justify-content-end" %>
+    <div class= "tagline d-flex justify-content-center align-items-center">
+      <h1>Cooking Mate</h1>
+       <%= link_to "Join the Community", new_user_registration_path, class:"btn btn-ghost" %>
     </div>
 </div>
 
 <%# <img src="https://res.cloudinary.com/dzltofqgu/image/upload/v1693286265/cld-sample-4.jpg" alt="banner"> %>
 
-<div class="d-flex flex-column align-items-center my-4">
-  <h1>Cooking Mate</h1>
-  <a class="btn btn-ghost mb-4" href="#">Join the Community</a>
-</div>
 
 
   <div class="d-flex flex-row align-items-center mx-4">
@@ -69,11 +66,11 @@
       sunt in culpa qui officia deserunt mollit anim id est laborum.
 
     </div>
-  <% end %>
+
 
   </div>
 </div>
-
+    <% else %>
  <div class="row justify-content-center">
   <div class="col-sm-8 my-3">
     <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
@@ -93,4 +90,4 @@
     <button><%= bookings.last.status %></button>
   <% end %>
 <% end %>
-
+ <% end %>
