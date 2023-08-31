@@ -8,11 +8,13 @@
   height: 120px;
 }
 
-
+#color {
+  color:#85E6C5;
+}
 
 .card {
   background-color: #ffffff;
-  border: 1px solid #ddd;
+  border: 1px solid #85E6C5;
   border-radius: 8px;
   padding: 20px;
   // width: calc(73.33% - 20px); /* Adjust the width and margin as needed */
@@ -23,7 +25,14 @@
   /* Add other styling for card content */
 }
 
+.card-title{
+  color:#85E6C5;
+}
 
 .card:hover {
   transform: translateY(-5px);
+}
+
+.card-header {
+  color:#85E6C5;
 }
