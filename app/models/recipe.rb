@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+  include PgSearch::Model
+
   belongs_to :cuisine
   belongs_to :user
   validates :title, presence: true
@@ -11,4 +13,15 @@ class Recipe < ApplicationRecord
   has_many :recipes_diets, dependent: :destroy
   has_many :diets, through: :recipes_diets
   accepts_nested_attributes_for :recipes_diets
+
+  pg_search_scope :global_search,
+                  against: [ :title, :description ],
+                  associated_against: {
+                    cuisine: [ :name ],
+                    ingredients: [ :name ],
+                    diets: [ :name ]
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end

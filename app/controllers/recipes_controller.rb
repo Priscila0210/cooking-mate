@@ -10,15 +10,19 @@ class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
     if params[:query].present?
-      sql_subquery = <<~SQL
-      recipes.title @@ :query
-      OR recipes.description @@ :query
-      OR ingredients.name @@ :query
-      OR cuisines.name @@ :query
-      OR diets.name @@ :query
-    SQL
-    @recipes = @recipes.joins(:ingredients).joins(:cuisines).joins(:diets).where(sql_subquery, query: "%#{params[:query]}%")
-    end
+    #   sql_subquery = <<~SQL
+    #   recipes.title ILIKE :query
+    #   OR recipes.description ILIKE :query
+
+
+    # SQL
+    # @recipes = @recipes.where(sql_subquery, query: "%#{params[:query]}%")
+    @recipes = Recipe.global_search("#{params[:query]}")
+  #     @recipes = @recipes.joins(:ingredients).joins(:cuisines).joins(:diets).where(sql_subquery, query: "%#{params[:query]}%")
+ # OR ingredients.name @@ :query
+  # OR cuisines.name @@ :query
+  # OR diets.name @@ :query
+  end
     @booking = Booking.new
     @prior_bookings = Booking.includes(:recipe)
   end

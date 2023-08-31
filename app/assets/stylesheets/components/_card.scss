@@ -5,11 +5,13 @@
   margin: 0 auto;
 }
 
-
+#color {
+  color:#85E6C5;
+}
 
 .card {
   background-color: #ffffff;
-  border: 1px solid #ddd;
+  border: 1px solid #85E6C5;
   border-radius: 8px;
   padding: 20px;
   // width: calc(73.33% - 20px); /* Adjust the width and margin as needed */
@@ -18,13 +20,16 @@
   transition: transform 0.2s ease-in-out;
   align-items: center;
 
-  /* Add other styling for card content */
 }
 
+.card-title{
+  color:#85E6C5;
+}
 
 .card:hover {
   transform: translateY(-5px);
 }
+
 
 .card-title {
   margin-top: 1rem;
@@ -35,4 +40,91 @@
 .card-info-small {
   font-size: 12px;
   text-decoration: underline;
+
+
+.accordion {
+  background-color: #eee;
+  color: #85E6C5;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+
+.booking-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.booking-card {
+  background-color: #f5f5f5;
+  border: 1px solid #cac1c1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+}
+
+.user-nickname {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.booking-status {
+  font-size: 16px;
+  color: #007bff;
+  margin: 0;
+}
+
+.recipe-title {
+  font-size: 16px;
+  margin: 0;
+}
+
+.recipe-date {
+  font-size: 16px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.card-header {
+  color:#85E6C5;
+
+
 }
