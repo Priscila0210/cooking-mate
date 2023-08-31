@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["togglableElement", "editRecipe", "details"]
+  static targets = ["togglableElement", "editRecipe", "details", "infoElement"]
   static values = { id: Number };
 
 
@@ -18,6 +18,10 @@ export default class extends Controller {
 
   recipe() {
     this.togglableElementTarget.classList.toggle("d-none")
+  }
+
+  info() {
+    this.infoElementTarget.classList.toggle("d-none")
   }
 
   editRecipe() {
