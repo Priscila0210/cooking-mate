@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
   #     @recipes = @recipes.joins(:ingredients).joins(:cuisines).joins(:diets).where(sql_subquery, query: "%#{params[:query]}%")
  # OR ingredients.name @@ :query
   # OR cuisines.name @@ :query
+
   # OR diets.name @@ :query
   end
     @booking = Booking.new
