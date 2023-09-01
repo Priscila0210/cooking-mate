@@ -28,13 +28,19 @@ Ingredient.create!(name: "Zucchini")
 Ingredient.create!(name: "Mushroom")
 Ingredient.create!(name: "Pumpkin")
 Ingredient.create!(name: "Eggs")
-
+Ingredient.create!(name: "Salt")
+Ingredient.create!(name: "Flour")
 
 User.create!(nickname: "Marcia", email: "marcia@test.com", password: "123456", address: "Barcelona", age: 35, description: Faker::Lorem.paragraph_by_chars(number: 56, supplemental: false), interested_in: "only friends", cooking_level: "beginner", availability: ["weekdays"])
 User.create!(nickname: "Gonzalo", email: "gonzalo@test.com", password: "123456", address: "Roma", age: 40, description: Faker::Lorem.paragraph_by_chars(number: 51, supplemental: false), interested_in: "open to anything", cooking_level: "some experience", availability: ["weekdays", "weekend"])
 
 
-Recipe.create!(title: "Gaspacho", description: "Lorem", length: 1, level_of_difficulty: "easy", cuisine: Cuisine.first, user: User.first)
-Recipe.create!(title: "Caccio e pepe", description: "Ipsum", length: 2, level_of_difficulty: "easy", cuisine: Cuisine.second, user: User.last)
-Recipe.create!(title: "Burrito", description: "Description goes here", length: 3, level_of_difficulty: "medium", cuisine: Cuisine.first, user: User.last)
-Recipe.create!(title: "Bacalau", description: "Best of Brazil", length: 7, level_of_difficulty: "hard", cuisine: Cuisine.last, user: User.first)
+Recipe.create!(title: "Gaspacho", description: "The delicious one", length: 1, level_of_difficulty: "easy", cuisine: Cuisine.first, user: User.first)
+Recipe.create!(title: "Caccio e pepe", description: "Mama's recipe", length: 2, level_of_difficulty: "easy", cuisine: Cuisine.second, user: User.last)
+Recipe.create!(title: "Burrito", description: "The vegan version", length: 3, level_of_difficulty: "medium", cuisine: Cuisine.first, user: User.last)
+
+Recipe.create!(title: "Bacalau", description: "Portuguese style", length: 7, level_of_difficulty: "hard", cuisine: Cuisine.last, user: User.first)
+Recipe.create!(title: "Coxinhas", description: "Best of Brazil", length: 4, level_of_difficulty: "medium", cuisine: Cuisine.last, user: User.first)
+Recipe.create!(title: "Paella", description: "The taste of Spain", length: 7, level_of_difficulty: "hard", cuisine: Cuisine.last, user: User.first)
+Recipe.create!(title: "Schnitzel", description: "Viennese way", length: 4, level_of_difficulty: "medium", cuisine: Cuisine.last, user: User.first)
+Recipe.create!(title: "Crème brulée", description: "The sweet of Paris", length: 2, level_of_difficulty: "easy", cuisine: Cuisine.last, user: User.first)
