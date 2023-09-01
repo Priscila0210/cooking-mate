@@ -17,8 +17,8 @@ class Recipe < ApplicationRecord
   pg_search_scope :global_search,
                   against: [ :title, :description ],
                   associated_against: {
-                    cuisine: [ :name ],
                     ingredients: [ :name ],
+                    cuisine: [ :name ],
                     diets: [ :name ]
                   },
                   using: {

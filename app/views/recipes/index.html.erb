@@ -108,7 +108,7 @@
         <div class="card mt-5">
 
           <%= cl_image_tag recipe.title, height: 220, width: "100%"  %>
-          <h5 class="card-title"><%= recipe.title %></h5>
+          <h5 class="card-title"><%= recipe.title %> by <%= recipe.user.nickname %></h5>
           <div class="trip-infos">
               <%= link_to profile_path(recipe.user), class: "trip-infos-avatar" do %>
                   <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693286262/samples/woman-on-a-football-field.jpg",class: "shadow-sm", width: 50, height: 50 %>
