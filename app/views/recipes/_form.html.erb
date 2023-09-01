@@ -1,26 +1,52 @@
-<%= simple_form_for [current_user, recipe] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%= simple_form_for [current_user, recipe], html: { class: 'modern-form' } do |f| %>
+  <%= f.error_notification class: 'alert alert-danger' %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence, class: 'alert alert-danger' if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :length %>
-    <%= f.input :description %>
-    <%= f.input :cuisine, collection: Cuisine.all %>
-    <%= f.input :level_of_difficulty, collection: ['easy', 'medium', 'hard']%>
-    <%= f.simple_fields_for :recipes_ingredients do |i| %>
-    <%= i.input :ingredient, collection: Ingredient.all,
-                input_html: { multiple: true },
-                wrapper_html: { class: 'form-group' }, :as => :check_boxes, include_hidden: false  %>
-    <% end %>
-    <%= f.simple_fields_for :recipes_diets do |i| %>
-    <%= i.input :diet, collection: Diet.all,
-                input_html: { multiple: true },
-                wrapper_html: { class: 'form-group' }, :as => :check_boxes, include_hidden: false  %>
-    <% end %>
-
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-ghost btn-block border border-dark rounded-pill" %>
+  <div class="form-group">
+    <%= f.input :title, class: 'form-control', placeholder: 'Title' %>
   </div>
-   </div>
+
+  <div class="form-group">
+    <%= f.input :length, class: 'form-control', placeholder: 'Length' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :description, class: 'form-control', placeholder: 'Description', as: :text %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :cuisine, collection: Cuisine.all, label: 'Select Cuisine', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :level_of_difficulty, collection: ['easy', 'medium', 'hard'], label: 'Difficulty', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.simple_fields_for :recipes_ingredients do |i| %>
+      <%= i.input :ingredient, collection: Ingredient.all,
+                  as: :check_boxes,
+                  label: 'Ingredients',
+                  wrapper_html: { class: 'form-group' },
+                  input_html: { class: 'form-check-input' },
+                  item_wrapper_class: 'form-check',
+                  include_hidden: false %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.simple_fields_for :recipes_diets do |i| %>
+      <%= i.input :diet, collection: Diet.all,
+                  as: :check_boxes,
+                  label: 'Diets',
+                  wrapper_html: { class: 'form-group' },
+                  input_html: { class: 'form-check-input' },
+                  item_wrapper_class: 'form-check',
+                  include_hidden: false %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.button :submit, 'Submit', class: 'btn btn-ghost btn-block rounded-pill' %>
+  </div>
 <% end %>

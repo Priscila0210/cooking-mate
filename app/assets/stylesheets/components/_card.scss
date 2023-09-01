@@ -6,12 +6,12 @@
 }
 
 #color {
-  color:#85E6C5;
+  color:$beautifulgreen;
 }
 
 .card {
   background-color: #ffffff;
-  border: 1px solid #85E6C5;
+  border: 1px solid $beautifulgreen;
   border-radius: 8px;
   padding: 20px;
   // width: calc(73.33% - 20px); /* Adjust the width and margin as needed */
@@ -23,7 +23,7 @@
 }
 
 .card-title{
-  color:#85E6C5;
+  color:$beautifulgreen;
 }
 
 .card:hover {
@@ -41,10 +41,10 @@
   font-size: 12px;
   text-decoration: underline;
 
-
+}
 .accordion {
   background-color: #eee;
-  color: #85E6C5;
+  color: $beautifulgreen;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -118,13 +118,21 @@
   margin: 0;
 }
 
+.recipe-item {
+  width: 80vw;
+}
+
+
 h4 {
   font-size: 16px;
   margin-top: 10px;
 }
 
 .card-header {
-  color:#85E6C5;
+  color:$beautifulgreen;
+  width: 80vw;
+}
 
-
+.float-end {
+  width: 40px;
 }
