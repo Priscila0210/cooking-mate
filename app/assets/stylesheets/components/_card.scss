@@ -1,7 +1,35 @@
+
+.card-title .trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.trip-infos {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  &-avatar {
+    position: absolute;
+    right: 0px;
+    top: -80px;
+  }
+  img {
+    border-radius: 25px;
+  }
+}
+
+
+
+// marcel
+
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-   grid-gap: 20px;
+  grid-gap: 20px;
   margin: 0 auto;
 }
 
@@ -62,7 +90,7 @@
 /* Style the accordion panel. Note: hidden by default */
 .panel {
   padding: 0 18px;
-  background-color: white;
+  //background-color: white;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;

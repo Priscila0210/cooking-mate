@@ -34,46 +34,56 @@
 
 
 
-  <div id="cards" class="d-flex flex-row align-items-center justify-content-center mx-4">
+  <div id="cards" class="cards-grid">
 
     <div class="card-category px-5 mx-3">
       <strong><mark>Eva Mendes</mark></strong>
       <p></p>
+      <footer class="blockquote-footer">
       As soon as I downloaded the app and put a profile picture with
       my specialty in pasta and Italian food, I already received several
       invitations to a culinary meeting. That happened 1 year ago,
       until today we are still friends and we discovered that besides
       food we have many other professional and personal affinities.
       It was my best match!
+      </footer>
 
     </div>
 
     <div class="card-category px-5 mx-3">
         <strong><mark>Ricky Martin</mark></strong>
         <p></p>
+        <p></p>
+        <footer class="blockquote-footer">
       My name is Martin, my new friends here on the app call me Ricky Martin the Big Boss,
       because I prepared for them one of my culinary specialties from Spain Paeja with baked seafood.
       That's why I got the name Chief. Thank you very much friends, it was a wonderful time!
+      </footer>
     </div>
 
     <div class="card-category px-5 mx-3">
         <strong><mark>Emma Watson</mark></strong>
         <p></p>
+        <footer class="blockquote-footer">
         I have a hectic professional life, I'm always away from home so
         I do my homework outside. But after discovering this app, I can gather friends
         at my house and learn new special recipes from around the world.
         I want to thank here my friend Ana Müller who for the moments and meals together,
         thank you.
+        </footer>
+
     </div>
 
-    <div class="card-category px-5 mx-3">
+    <%# <div class="card-category px-5 mx-3">
       <strong><mark>Alejandro Salles</mark></strong>
       <p></p>
+      <footer class="blockquote-footer">
       I would like to thank this one because it was through him that I had wonderful
       moments with my friend Emma at that time. After a year on the app,
       Emma and I got married and learned several new dishes.
       Today in our house we are teaching our friends and neighbors how to cook.
-    </div>
+      </footer>
+    </div> %>
   </div>
 
 
@@ -97,17 +107,18 @@
       <% @recipes.each do |recipe| %>
         <div class="card mt-5">
 
-          <%= cl_image_tag recipe.title, height: 120, width: "100%"  %>
+          <%= cl_image_tag recipe.title, height: 220, width: "100%"  %>
           <h5 class="card-title"><%= recipe.title %></h5>
-          <div class="d-flex align-items-center justify-content-between my-2 w-100">
-              <%= link_to profile_path(recipe.user) do %>
-                  <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693286262/samples/woman-on-a-football-field.jpg", width: 35, height: 35 %>
-                  <%# <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max/v1693286262/samples/woman-on-a-football-field.jpg", width: 35, height: 35 %>
+          <div class="trip-infos">
+              <%= link_to profile_path(recipe.user), class: "trip-infos-avatar" do %>
+                  <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693286262/samples/woman-on-a-football-field.jpg",class: "shadow-sm", width: 50, height: 50 %>
+                  <%# <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max/v1693286262/samples/woman-on-a-football-field.jpg", class: "shadow-sm", width: 50, height: 50 %>
               <% end %>
-                <%= render "shared/card", recipe: recipe %>
-                <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#<%= recipe.description %>">
+
+                <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description">
                       more
                     </button>
+                     <%= render "shared/card", recipe: recipe %>
                 <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
                 <% if bookings.count == 0 %>
                     <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">
