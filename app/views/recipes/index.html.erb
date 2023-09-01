@@ -106,34 +106,32 @@
     <div class="cards-container">
       <% @recipes.each do |recipe| %>
         <div class="card mt-5">
-
-          <%= cl_image_tag recipe.title, height: 220, width: "100%"  %>
-          <h5 class="card-title"><%= recipe.title %> by <%= recipe.user.nickname %></h5>
-          <div class="trip-infos">
-              <%= link_to profile_path(recipe.user), class: "trip-infos-avatar" do %>
-                  <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693286262/samples/woman-on-a-football-field.jpg",class: "shadow-sm", width: 50, height: 50 %>
+           <%= cl_image_tag recipe.title, height: 220, width: "100%"  %>
+            <h5 class="card-title"><%= recipe.title %> by <%= recipe.user.nickname %></h5>
+            <div class="trip-infos">
+                <%= link_to profile_path(recipe.user), class: "trip-infos-avatar" do %>
+                  <%# <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693286262/samples/woman-on-a-football-field.jpg",class: "shadow-sm", width: 50, height: 50 %> %>
                   <%# <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max/v1693286262/samples/woman-on-a-football-field.jpg", class: "shadow-sm", width: 50, height: 50 %>
-              <% end %>
-
+                <% end %>
                 <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description">
                       more
-                    </button>
-                     <%= render "shared/card", recipe: recipe %>
-                <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
+                </button>
+            </div>
+              <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
                 <% if bookings.count == 0 %>
-                    <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">
-                      book
-                    </button>
+                  <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">
+                    book
+                  </button>
                 <% else %>
-                    already booked! 
+                  already booked!
                 <% end %>
           </div>
-        </div>
-        <%= render "booking", recipe: recipe, booking: @booking %>
+          <%= render "shared/card", recipe: recipe %>
+          <%= render "booking", recipe: recipe, booking: @booking %>
       <% end %>
     </div>
-
   </div>
+
 <% end %>
 
 
