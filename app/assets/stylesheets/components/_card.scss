@@ -1,3 +1,31 @@
+
+.card-title .trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.trip-infos {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  &-avatar {
+    position: absolute;
+    right: 0px;
+    top: -80px;
+  }
+  img {
+    border-radius: 25px;
+  }
+}
+
+
+
+// marcel
+
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
