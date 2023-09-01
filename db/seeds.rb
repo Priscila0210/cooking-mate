@@ -62,6 +62,9 @@ Ingredient.create!(name: "Snails")
 Ingredient.create!(name: "Zucchini")
 Ingredient.create!(name: "Mushroom")
 Ingredient.create!(name: "Pumpkin")
+Ingredient.create!(name: "Eggs")
+Ingredient.create!(name: "Salt")
+Ingredient.create!(name: "Flour")
 Ingredient.create!(name: "Garlic")
 Ingredient.create!(name: "Onion")
 Ingredient.create!(name: "Sweet Potato")
@@ -77,12 +80,10 @@ Ingredient.create!(name: "Eggplant")
 Ingredient.create!(name: "Carrot")
 Ingredient.create!(name: "Radish")
 Ingredient.create!(name: "Artichoke")
-
 Ingredient.create!(name: "Eggs")
 Ingredient.create!(name: "Salt")
 Ingredient.create!(name: "Flour")
 Ingredient.create!(name: "Milk")
-
 
 puts "Creating users"
 User.create!(nickname: "Marcia", email: "marcia@test.com", password: "123456", address: "Barcelona", age: 35, description: Faker::Lorem.paragraph_by_chars(number: 56, supplemental: false), interested_in: "only friends", cooking_level: "beginner", availability: ["weekdays"])
@@ -90,7 +91,9 @@ User.create!(nickname: "Gonzalo", email: "gonzalo@test.com", password: "123456",
 
 puts "Creating recipes"
 
+
 Recipe.create!(title: "Gaspacho", description: "In the dog days of summer, we're grateful for this easy gazpacho recipe, which comes together quickly in a blender, no cooking necessary.", length: 1, level_of_difficulty: "easy", cuisine: Cuisine.first, user: User.first)
+
 Recipe.create!(title: "Caccio e pepe", description: "Mama's recipe which requires only 4 ingredients and takes 15 minutes to make! A perfect weeknight pasta dish thats's super indulgent.", length: 2, level_of_difficulty: "easy", cuisine: Cuisine.first, user: User.last)
 Recipe.create!(title: "Burrito", description: "Everyday Beef Burrito recipe, stuffed with a simpler, super tasty seasoned beef filling, rice and other fillings of choice.", length: 3, level_of_difficulty: "medium", cuisine: Cuisine.first, user: User.last)
 Recipe.create!(title: "Bacalau", description: "Portuguese style", length: 7, level_of_difficulty: "hard", cuisine: Cuisine.last, user: User.first)
