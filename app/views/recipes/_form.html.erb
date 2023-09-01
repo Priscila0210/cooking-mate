@@ -1,3 +1,16 @@
+
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel"><%= recipe.title %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+
 <%= simple_form_for [current_user, recipe], html: { class: 'modern-form' } do |f| %>
   <%= f.error_notification class: 'alert alert-danger' %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence, class: 'alert alert-danger' if f.object.errors[:base].present? %>
@@ -50,3 +63,7 @@
     <%= f.button :submit, 'Submit', class: 'btn btn-ghost btn-block rounded-pill' %>
   </div>
 <% end %>
+</div>
+    </div>
+  </div>
+</div>

@@ -2,15 +2,21 @@
 
   <h1 class="mt-2" id="color">Hello <%= current_user.nickname %>!</h1>
   <div class="card" data-controller="toggle">
-    <div class="card-header ">
+    <div class="card-header">
      <button data-toggle-target ="accordion" class="accordion" id="recipes">My Recipes</button>
+        <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#add">
+        add
+      </button>
       <div class="panel" class="d-flex flex-column justify-content-around align-items-end" >
-        <button class= "btn btn-ghost mt-2" data-action="click->toggle#recipe" class="float-end ">Add</button>
+        <%# <button class= "btn btn-ghost mt-2" data-action="click->toggle#recipe" class="float-end ">Add</button> %>
+
+
+
         <%# <p>Add a recipe!</p> %>
         <%# <i class="fa-solid fa-plus" ></i> %>
-        <div data-toggle-target="togglableElement" class="d-none">
+        <%# <div data-toggle-target="togglableElement" class="d-none">
           <%= render "recipes/form", recipe: @recipe %>
-        </div>
+        <%# </div>  %>
 
         <div class="card-body mb-5">
 
@@ -35,11 +41,13 @@
               </div>
             </div>
           <% end %>
+          </div>
+    </div>
         </div>
       </div>
     </div>
   </div>
-
+<%= render "recipes/form", recipe: @recipe %>
   <div class="card" data-controller="toggle">
     <div class="card-header">
       <button data-toggle-target ="accordion" class="accordion">Booking Details</button>
