@@ -110,7 +110,9 @@
             <h5 class="card-title"><%= recipe.title %> by <%= recipe.user.nickname %></h5>
             <div class="trip-infos">
                 <%= link_to profile_path(recipe.user), class: "trip-infos-avatar" do %>
+
                   <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/v1693573408/development/Marcia.jpg", class: "shadow-sm", width: 50, height: 50 %>
+
                 <% end %>
                 <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description">
                       more
