@@ -8,7 +8,7 @@
 // }
 
 .profile-container {
-  background: #85E6C5;
+  background-color: #eee;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -34,14 +34,15 @@
 // }
 
 .profile-image {
-  background-color: #33BBC5;
+  background-color: whitesmoke;
   text-align: center;
-  font-family: "Arial Black", sans-serif;
+
   height: auto;
   width: 30%;
   margin-right: 20px;
   border-radius: 50%;
   margin-bottom: 10px;
+  border: 1px solid #85E6C5;
 }
 
 .profile-image img{
@@ -60,34 +61,37 @@
 //   font-family: Arial, Helvetica, sans-serif;
 // }
 
-h6, h2 {
-  font-family: "Arial Black", sans-serif;
+h2 {
   margin: 2px 0;
+  color:#85E6C5;
 }
 
 h6 {
   font-weight: bold;
   font-size:x-small;
+  margin: 2px 0;
+  color:black;
 }
 
 .profile-description {
   width: 65%;
-  background:#33BBC5;
+  background-color: whitesmoke;
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-
+  border: 1px solid #85E6C5;
 }
 
 .profile-details {
-  background:#33BBC5;
+  background-color: whitesmoke;
   width: 100%;
   padding: 20px;
   margin-top: 20px;
   border-radius: 4px;
+  border: 1px solid #85E6C5;
 }
 
 mark{
-  color:#614BC3;
+  color:#85E6C5;
   background: none;
 }
