@@ -2,19 +2,19 @@
 
   <h1 class="mt-2" id="color">Hello <%= current_user.nickname %>!</h1>
   <div class="card" data-controller="toggle">
-    <div class="card-header ">
+    <div class="card-header">
      <button data-toggle-target ="accordion" class="accordion" id="recipes">My Recipes</button>
-      <div class="panel" class="d-flex flex-column justify-content-around align-items-end" >
-        <button class= "btn btn-ghost mt-2" data-action="click->toggle#recipe" class="float-end ">Add</button>
-        <%# <p>Add a recipe!</p> %>
-        <%# <i class="fa-solid fa-plus" ></i> %>
-        <div data-toggle-target="togglableElement" class="d-none">
-          <%= render "recipes/form", recipe: @recipe %>
-        </div>
 
+      <div class="panel" class="d-flex flex-column justify-content-around align-items-end" >
+        <%# <button class= "btn btn-ghost mt-2" data-action="click->toggle#recipe" class="float-end ">Add</button> %>
+        <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#add">
+          add
+        </button>
         <div class="card-body mb-5">
 
           <% @user.recipes.each do |recipe| %>
+            <%= render "recipes/editform", recipe: recipe %>
+
             <div data-controller="toggle" class="recipe-item border p-3 mb-4">
               <div data-toggle-target="details">
                 <h4 class="ti"><strong id="color">Title:</strong> <%= recipe.title %></h4>
@@ -24,22 +24,25 @@
                 <p><strong id="color">Preparation time:</strong> <%= recipe.length %></p>
                 <%= link_to "" ,
                             recipe_path(recipe),
-                            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                            data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete that recipe?" },
                             class:"fa-solid fa-trash mb-5" %>
               </div>
-              <div  data-id="<%= @recipe.id %>">
-                <button data-action="click->toggle#editRecipe click->toggle#updatetoggle"  class= "btn btn-ghost" ><i class="fa-regular fa-pen-to-square"></i></button>
-                  <div data-toggle-target="editRecipe" class="d-none">
-                    <%= render "recipes/editform", recipe: recipe %>
-                  </div>
-              </div>
+              <%# <div  data-id="<%= @recipe.id %>
+              <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#edit">
+                <i class="fa-regular fa-pen-to-square"></i>
+              </button>
+
+                <%# <button data-action="click->toggle#editRecipe click->toggle#updatetoggle"  class= "btn btn-ghost" ></button>
+                  <div data-toggle-target="editRecipe" class="d-none"> %>
+                  <%# </div> %>
+              <%# </div> %>
             </div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-
+<%= render "recipes/form", recipe: @recipe %>
   <div class="card" data-controller="toggle">
     <div class="card-header">
       <button data-toggle-target ="accordion" class="accordion">Booking Details</button>
