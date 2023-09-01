@@ -1,9 +1,10 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
+
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
 
-  static targets = ["togglableElement", "editRecipe", "details", "infoElement", "accordion", ]
+  static targets = ["togglableElement", "editRecipe", "details", "infoElement", "accordion" ]
 
 
   static values = { id: Number };
@@ -11,7 +12,7 @@ export default class extends Controller {
 
   connect() {
     this.toggled = false
-    console.log(this.accordionTargets)
+    //console.log(this.accordionTargets)
     this.activateaccordion()
   }
 
