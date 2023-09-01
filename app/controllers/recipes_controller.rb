@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
 
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where.not(user: current_user)
     if params[:query].present?
     #   sql_subquery = <<~SQL
     #   recipes.title ILIKE :query
@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
 
     # SQL
     # @recipes = @recipes.where(sql_subquery, query: "%#{params[:query]}%")
-    @recipes = Recipe.global_search("#{params[:query]}")
+    @recipes = Recipe.global_search("#{params[:query]}").where.not(user: current_user)
   #     @recipes = @recipes.joins(:ingredients).joins(:cuisines).joins(:diets).where(sql_subquery, query: "%#{params[:query]}%")
  # OR ingredients.name @@ :query
   # OR cuisines.name @@ :query
@@ -67,9 +67,16 @@ class RecipesController < ApplicationController
     #   render :edit, status: :unprocessable_entity
     # end
 
-    respond_to do |format|
+    # respond_to do |format|
+      @user = current_user
       @recipe.ingredient_ids = params[:recipe][:ingredient_ids]
-
+      @recipe.diet_ids = params[:recipe][:diet_ids]
+      @recipe.cuisine_id = params[:recipe][:cuisine]
+      if @recipe.update(recipe_params)
+        redirect_to dashboard_path, notice: "Recipe was successfully updated.", status: :see_other
+      # else
+      #   render "pages/dashboard", status: :unprocessable_entity, locals: {user: @user}
+      end
     # FOR OLIVIER
     #   new_ingredients = params[:recipe][:ingredient_ids].reject { |ingredient| @recipe.ingredients.pluck(:id).include?(ingredient) }
     #   add new_ingredients
@@ -83,14 +90,15 @@ class RecipesController < ApplicationController
     #    if !ingredient.include?(@recipe.ingredients)
     #   recipes_ingredient.ingredient = Ingredient.find(ingredient)
 
-      if @recipe.update(recipe_params)
-        format.html { redirect_to recipe_path(@recipe), notice: "Recipe was successfully updated.", status: :see_other }
-        format.json { render json: { message: "Recipe updated successfully" }, status: :ok }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
+      # if @recipe.update(recipe_params)
+      #   # raise
+      #   format.html { redirect_to dashboard_path, notice: "Recipe was successfully updated.", status: :see_other }
+      #   format.json { render json: { message: "Recipe updated successfully" }, status: :ok }
+      # else
+      #   format.html { render "pages/dashboard", status: :unprocessable_entity }
+      #   format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      # end
+    # end
   end
 
   def destroy
