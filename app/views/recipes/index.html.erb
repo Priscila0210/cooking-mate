@@ -104,13 +104,17 @@
                   <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693286262/samples/woman-on-a-football-field.jpg", width: 35, height: 35 %>
                   <%# <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max/v1693286262/samples/woman-on-a-football-field.jpg", width: 35, height: 35 %>
               <% end %>
-              <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
+                <%= render "shared/card", recipe: recipe %>
+                <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#<%= recipe.description %>">
+                      more
+                    </button>
+                <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
                 <% if bookings.count == 0 %>
                     <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">
                       book
                     </button>
                 <% else %>
-                  <%= render "shared/card", recipe: recipe %>
+                    already booked!
                 <% end %>
           </div>
         </div>
