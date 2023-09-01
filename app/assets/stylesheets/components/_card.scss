@@ -24,11 +24,37 @@
 
 
 
+
+.fa-solid {
+
+  text-decoration: none;
+  font-size: 30px;
+  padding: 0px 10px;
+  color: rgb(103, 237, 114);
+
+}
+
+
+.ti {
+  text-decoration: none;
+  font-size: 30px;
+  padding: 0px 10px;
+  color: rgb(103, 237, 114);
+
+
+}
+
+
+
+
+
+
+
 // marcel
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 20px;
   margin: 0 auto;
 }
@@ -80,6 +106,7 @@
   border: none;
   outline: none;
   transition: 0.4s;
+
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -94,6 +121,7 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+
 }
 
 .accordion:after {
@@ -147,7 +175,8 @@
 }
 
 .recipe-item {
-  width: 80vw;
+  width: 60vw;
+  
 }
 
 

@@ -4,9 +4,10 @@
   <div class="card" data-controller="toggle">
     <div class="card-header ">
      <button data-toggle-target ="accordion" class="accordion" id="recipes">My Recipes</button>
-      <div class="panel" class="d-flex  flex-column justify-content-around align-items-end" >
-        <button class= "btn btn-ghost mt-2" data-action="click->toggle#recipe" class="float-end "><i class="fa-solid fa-plus" ></i></button>
-        <p>Add a recipe!</p>
+      <div class="panel" class="d-flex flex-column justify-content-around align-items-end" >
+        <button class= "btn btn-ghost mt-2" data-action="click->toggle#recipe" class="float-end ">Add</button>
+        <%# <p>Add a recipe!</p> %>
+        <%# <i class="fa-solid fa-plus" ></i> %>
         <div data-toggle-target="togglableElement" class="d-none">
           <%= render "recipes/form", recipe: @recipe %>
         </div>
@@ -16,7 +17,7 @@
           <% @user.recipes.each do |recipe| %>
             <div data-controller="toggle" class="recipe-item border p-3 mb-4">
               <div data-toggle-target="details">
-                <h4><strong id="color">Title:</strong> <%= recipe.title %></h4>
+                <h4 class="ti"><strong id="color">Title:</strong> <%= recipe.title %></h4>
                 <p><strong id="color">Description:</strong> <%= recipe.description %></p>
                 <p><strong id="color">Level of Difficulty:</strong> <%= recipe.level_of_difficulty %></p>
                 <p><strong id="color">Cuisine:</strong> <%= recipe.cuisine.name %></p>
