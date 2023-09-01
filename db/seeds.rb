@@ -9,11 +9,17 @@
 require 'faker'
 
 puts "Cleaning up"
+UsersCuisine.destroy_all
+RecipesDiet.destroy_all
+UsersDiet.destroy_all
+Booking.destroy_all
+Recipe.destroy_all
 Cuisine.destroy_all
 Diet.destroy_all
 Ingredient.destroy_all
+
 User.destroy_all
-Recipe.destroy_all
+
 
 puts "Creating cuisines"
 Cuisine.create!(name: "Spanish")
