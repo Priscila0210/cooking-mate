@@ -7,15 +7,14 @@
 }
 
 .trip-infos {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   &-avatar {
     position: absolute;
-    right: 0px;
-    top: -80px;
+    right: 5px;
+    top: -308px;
   }
   img {
     border-radius: 25px;
@@ -54,9 +53,14 @@
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 20px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 0,6px;
+  // margin: auto;
+  // margin-left: 20px !important;
+  // margin-right: 20px !important;
+  padding: 20px !important;
+  grid-auto-rows: auto;
+
 }
 
 #color {
@@ -73,6 +77,7 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
   align-items: center;
+  position: relative
 }
 
 .card-title{
@@ -85,9 +90,12 @@
 
 
 .card-title {
-  margin-top: 1rem;
+  margin-top: 0rem;
   font-size: 16px;
   align-self: flex-start;
+  // height: 25px;
+
+
 }
 
 .card-info-small {
