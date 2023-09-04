@@ -95,7 +95,7 @@ user1.avatar.attach(io: avatar1, filename: "Marcia.jpg", content_type: "image/jp
 user1.save
 
 
-avatar2= URI.open("https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693831045/production/young-man-1281282_19201_cd80n7.jpg")
+avatar2= URI.open("https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693831045/production/Gonzalo.jpg")
 user2 = User.create!(nickname: "Gonzalo", email: "gonzalo@test.com", password: "123456", address: "Roma", age: 40, description: Faker::Lorem.paragraph_by_chars(number: 51, supplemental: false), interested_in: "open to anything", cooking_level: "some experience", availability: ["weekdays", "weekend"])
 user2.avatar.attach(io: avatar2, filename: "Gonzalo.jpg", content_type: "image/jpg")
 user2.save
