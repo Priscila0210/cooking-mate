@@ -10,4 +10,5 @@ class User < ApplicationRecord
   validates :cooking_level, inclusion: {in: ["beginner", "some experience", "advanced"]}
   validates :interested_in, inclusion: {in: ["only friends", "open to anything"]}
   has_many :recipes
+  has_one_attached :avatar
 end

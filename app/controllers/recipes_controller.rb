@@ -8,25 +8,35 @@ class RecipesController < ApplicationController
 
 
   def index
-    @recipes = Recipe.where.not(user: current_user)
-    if params[:query].present?
-    #   sql_subquery = <<~SQL
-    #   recipes.title ILIKE :query
-    #   OR recipes.description ILIKE :query
-
-
-    # SQL
-    # @recipes = @recipes.where(sql_subquery, query: "%#{params[:query]}%")
-    @recipes = Recipe.global_search("#{params[:query]}").where.not(user: current_user)
-  #     @recipes = @recipes.joins(:ingredients).joins(:cuisines).joins(:diets).where(sql_subquery, query: "%#{params[:query]}%")
- # OR ingredients.name @@ :query
-  # OR cuisines.name @@ :query
-
-  # OR diets.name @@ :query
-  end
     @booking = Booking.new
     @prior_bookings = Booking.includes(:recipe)
+
+    if params[:query].present?
+      @recipes_result = Recipe.global_search("#{params[:query]}").where.not(user: current_user)
+
+
+      if !@recipes_result.empty? && (params[:query].present?)
+        respond_to do |format|
+          format.html
+          format.text { render partial: "recipes/list", locals: {recipes: @recipes_result}, formats: [:html] }
+        end
+
+      else
+      #@recipes_result = Recipe.where.not(user: current_user)
+        respond_to do |format|
+          format.html
+          format.text { render partial: "recipes/empty", formats: [:html] }
+        end
+      end
+    else
+      @recipes_result = Recipe.where.not(user: current_user)
+      respond_to do |format|
+        format.html
+        format.text { render partial: "recipes/list", locals: {recipes: @recipes_result}, formats: [:html] }
+    end
   end
+end
+
 
   def edit
   end
@@ -113,6 +123,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:level_of_difficulty, :title, :description) # add length
+    params.require(:recipe).permit(:level_of_difficulty, :title, :description, :photo) # add length
   end
 end
