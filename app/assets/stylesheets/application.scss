@@ -16,7 +16,11 @@
 .cards-grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 50px;
+    grid-gap: 30px;
+    margin-top: -100px;
+    // align-items: baseline;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
 
 }
 
@@ -30,3 +34,10 @@
 //   grid-gap: 50px;
 
 // }
+
+.quote {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875em;
+  color: #6c757d;
+}
