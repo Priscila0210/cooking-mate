@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   end
 
 
-  def profile
+  def user
     @user = current_user
     @recipe = Recipe.new
   end

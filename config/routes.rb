@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "recipes#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get "profile", to: "pages#profile"
+  get "user", to: "pages#user"
   # Defines the root path route ("/")
   # root "articles#index"
   get "dashboard", to: "pages#dashboard"
