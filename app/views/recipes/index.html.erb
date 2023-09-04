@@ -20,72 +20,65 @@
       </div>
     </div>
 
+    <a href="#cards">
+      <svg class="arrows">
+        <path class="a1" d="M0 0 L30 32 L60 0"></path>
+        <path class="a2" d="M0 20 L30 52 L60 20"></path>
+        <path class="a3" d="M0 40 L30 72 L60 40"></path>
+      </svg>
+    </a>
 
-
-<a href="#cards">
-    <svg class="arrows">
-      <path class="a1" d="M0 0 L30 32 L60 0"></path>
-      <path class="a2" d="M0 20 L30 52 L60 20"></path>
-      <path class="a3" d="M0 40 L30 72 L60 40"></path>
-    </svg>
-</a>
-
-
-
-
-
-  <div id="cards" class="cards-grid">
-
-    <div class="card-category px-5 mx-3">
-      <strong><mark>Eva Mendes</mark></strong>
-      <p></p>
-      <footer class="blockquote-footer">
-      As soon as I downloaded the app and put a profile picture with
-      my specialty in pasta and Italian food, I already received several
-      invitations to a culinary meeting. That happened 1 year ago,
-      until today we are still friends and we discovered that besides
-      food we have many other professional and personal affinities.
-      It was my best match!
-      </footer>
-
-    </div>
-
-    <div class="card-category px-5 mx-3">
-        <strong><mark>Ricky Martin</mark></strong>
-        <p></p>
+    <div id="cards" class="cards-grid">
+      <div class="card-category px-5 mx-3">
+        <strong><mark>Eva Mendes</mark></strong>
         <p></p>
         <footer class="blockquote-footer">
-      My name is Martin, my new friends here on the app call me Ricky Martin the Big Boss,
-      because I prepared for them one of my culinary specialties from Spain Paeja with baked seafood.
-      That's why I got the name Chief. Thank you very much friends, it was a wonderful time!
-      </footer>
-    </div>
-
-    <div class="card-category px-5 mx-3">
-        <strong><mark>Emma Watson</mark></strong>
-        <p></p>
-        <footer class="blockquote-footer">
-        I have a hectic professional life, I'm always away from home so
-        I do my homework outside. But after discovering this app, I can gather friends
-        at my house and learn new special recipes from around the world.
-        I want to thank here my friend Ana Müller who for the moments and meals together,
-        thank you.
+        As soon as I uploaded a picture with
+        my specialty in pasta and Italian food, I already received several
+        invitations to a culinary meeting. That happened 1 year ago,
+        until today we are still friends and we discovered that besides
+        food we have many other professional and personal affinities.
+        It was my best match!
         </footer>
 
+      </div>
+
+      <div class="card-category px-5 mx-3">
+          <strong><mark>Ricky Martin</mark></strong>
+          <p></p>
+          <p></p>
+          <footer class="blockquote-footer">
+        My name is Martin, my new friends here on the app call me Ricky Martin the Big Boss,
+        because I prepared for them one of my culinary specialties from Spain Paella with baked seafood.
+        That's why I got the name Chief. Thank you very much friends, it was a wonderful time!
+        </footer>
+      </div>
+
+      <div class="card-category px-5 mx-3">
+          <strong><mark>Emma Watson</mark></strong>
+          <p></p>
+          <footer class="blockquote-footer">
+          I have a hectic professional life, I'm always away from home so
+          I do my homework outside. But after discovering Cooking Mate, I can gather friends
+          at my house and learn new special recipes from around the world.
+          I want to thank here my friend Ana Müller who for the moments and meals together,
+          thank you.
+          </footer>
+
+      </div>
+
+      <%# <div class="card-category px-5 mx-3">
+        <strong><mark>Alejandro Salles</mark></strong>
+        <p></p>
+        <footer class="blockquote-footer">
+        I would like to thank this one because it was through him that I had wonderful
+        moments with my friend Emma at that time. After a year on the app,
+        Emma and I got married and learned several new dishes.
+        Today in our house we are teaching our friends and neighbors how to cook.
+        </footer>
+      </div> %>
     </div>
-
-    <%# <div class="card-category px-5 mx-3">
-      <strong><mark>Alejandro Salles</mark></strong>
-      <p></p>
-      <footer class="blockquote-footer">
-      I would like to thank this one because it was through him that I had wonderful
-      moments with my friend Emma at that time. After a year on the app,
-      Emma and I got married and learned several new dishes.
-      Today in our house we are teaching our friends and neighbors how to cook.
-      </footer>
-    </div> %>
   </div>
-
 
 <% else %>
 
@@ -103,36 +96,40 @@
 
       <% end %>
     </div>
+
     <div class="cards-container">
       <% @recipes.each do |recipe| %>
         <div class="card mt-5">
-           <%= cl_image_tag(Rails.env.production? ? "production/#{recipe.title}" : "development/#{recipe.title}", height: 220, width: "100%")  %>
-            <h5 class="card-title"><%= recipe.title %> by <%= recipe.user.nickname %></h5>
-            <div class="trip-infos">
-                <%= link_to profile_path(recipe.user), class: "trip-infos-avatar" do %>
+          <%= cl_image_tag(Rails.env.production? ? "production/#{recipe.title}" : "development/#{recipe.title}", height: 220, width: "100%")  %>
+          <h5 class="card-title"><%= recipe.title %> by <%= recipe.user.nickname %></h5>
+          <div class="trip-infos">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#user-<%= recipe.user.id %>">
+              <%= content_tag :span, class: "trip-infos-avatar" do %>
+                <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg", class: "shadow-sm", width: 50, height: 50 %>
+              <% end %>
+            </a>
 
-                  <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/v1693573408/development/Marcia.jpg", class: "shadow-sm", width: 50, height: 50 %>
+            <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description">
+                  more
+            </button>
+            <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
+            <% if bookings.count.positive? %>
+              <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">
+                book
+              </button>
+            <% else %>
+              already booked!
+            <% end %>
 
-                <% end %>
-                <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description">
-                      more
-                </button>
-            </div>
-              <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
-                <% if bookings.count == 0 %>
-                  <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">
-                    book
-                  </button>
-                <% else %>
-                  already booked!
-                <% end %>
-          </div>
+          </div> <%# closing the 'trip-infos' div here %>
+
           <%= render "shared/card", recipe: recipe %>
+          <%= render "shared/user", recipe: recipe %>
           <%= render "booking", recipe: recipe, booking: @booking %>
+        </div> <%# ending 'card' div %>
       <% end %>
     </div>
   </div>
-
 <% end %>
 
 
