@@ -31,6 +31,7 @@ Cuisine.create!(name: "Japanese")
 Cuisine.create!(name: "Chinese")
 Cuisine.create!(name: "Greek")
 Cuisine.create!(name: "Indian")
+Cuisine.create!(name: "German")
 Cuisine.create!(name: "Mexican")
 Cuisine.create!(name: "American")
 
@@ -87,6 +88,7 @@ Ingredient.create!(name: "Flour")
 Ingredient.create!(name: "Milk")
 
 puts "Creating users"
+
 avatar1= URI.open("https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg")
 user1 = User.new(nickname: "Marcia", email: "marcia@test.com", password: "123456", address: "Barcelona", age: 35, description: Faker::Lorem.paragraph_by_chars(number: 56, supplemental: false), interested_in: "only friends", cooking_level: "beginner", availability: ["weekdays"])
 user1.avatar.attach(io: avatar1, filename: "Marcia.jpg", content_type: "image/jpg")
@@ -115,6 +117,7 @@ user5.save
 
 
 puts "Creating recipes"
+
 
 file1 = URI.open("https://res.cloudinary.com/dzltofqgu/image/upload/v1693566686/production/Gaspacho.jpg")
 recipe1 = Recipe.new(title: "Gaspacho", description: "In the dog days of summer, we're grateful for this easy gazpacho recipe, which comes together quickly in a blender, no cooking necessary.", length: 1, level_of_difficulty: "easy", cuisine: Cuisine.first, user: User.first)
