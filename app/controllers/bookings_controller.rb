@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
   def accepted
     @booking = Booking.find(params[:id])
     @booking.accepted!
+    @chatroom = Chatroom.create(booking_id: @booking.id)
     redirect_to :dashboard
   end
 
@@ -48,12 +49,7 @@ class BookingsController < ApplicationController
     redirect_to recipes_path, notice: "Booking was successfully created."
   end
 
-  def update
-    @booking = Booking.find(params[:id])
-    if @booking.accepted
-      @chatroom = Chatroom.create(booking_id: @booking.id)
-    end
-  end
+
 
   private
 

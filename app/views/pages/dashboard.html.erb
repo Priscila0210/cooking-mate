@@ -32,13 +32,12 @@
                 <i class="fa-regular fa-pen-to-square"></i>
               </button>
           </div>
-        </div>
         <%= render "recipes/editform", recipe: recipe %>
         <% end %>
+        </div>
+        <%= render "recipes/form", recipe: @recipe %>
       </div>
-
-      <%= render "recipes/form", recipe: @recipe %>
-      </div>
+    </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingTwo">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -48,7 +47,6 @@
       <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
         <%= render "recipes/mybookingsdetails" %>
-
         </div>
       </div>
     </div>
