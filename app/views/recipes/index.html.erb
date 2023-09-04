@@ -82,54 +82,33 @@
 
 <% else %>
 
-  <div class="row justify-content-center">
-    <div class="col-sm-8 my-3">
-      <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+    <div class="row justify-content-center" data-controller="search">
+    <div class="col-sm-8 my-3" >
+      <%= form_with url: recipes_path, method: :get, html: {class: "d-flex", data: {search_target: "form"}} do %>
         <%= text_field_tag :query,
-
             params[:query],
             class: "form-control",
-            placeholder: "Type a keyword"
+            placeholder: "Look for your recipes, ingredients, cuisines, diets ....",
+            data: {
+              search_target: "input",
+              action: "keyup->search#update"
+              }
         %>
-
         <%= submit_tag "Search", name: "", class: "btn btn-ghost" %>
-
       <% end %>
+      <div data-action="click->search#filter" data-search-target="button">
+        <button class="btn btn-ghost">Vegetarian</button>
+        <button class="btn btn-ghost">Italian</button>
+        <button class="btn btn-ghost">American</button>
+        <button class="btn btn-ghost">Pumpkin</button>
     </div>
+      <% if !@recipes_result.empty?  %>
+      <%= render partial: "recipes/list", locals: {recipes: @recipes_result} %>
+      <% else %>
+       <%=   render partial: "recipes/empty" %>
+      <% end%>
+ </div>
 
-    <div class="cards-container">
-      <% @recipes.each do |recipe| %>
-        <div class="card mt-5">
-          <%= cl_image_tag(Rails.env.production? ? "production/#{recipe.title}" : "development/#{recipe.title}", height: 220, width: "100%")  %>
-          <h5 class="card-title"><%= recipe.title %> by <%= recipe.user.nickname %></h5>
-          <div class="trip-infos">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#user-<%= recipe.user.id %>">
-              <%= content_tag :span, class: "trip-infos-avatar" do %>
-                <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg", class: "shadow-sm", width: 50, height: 50 %>
-              <% end %>
-            </a>
-
-            <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description">
-                  more
-            </button>
-            <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
-            <% if bookings.count.positive? %>
-              <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">
-                book
-              </button>
-            <% else %>
-              already booked!
-            <% end %>
-
-          </div> <%# closing the 'trip-infos' div here %>
-
-          <%= render "shared/card", recipe: recipe %>
-          <%= render "shared/user", recipe: recipe %>
-          <%= render "booking", recipe: recipe, booking: @booking %>
-        </div> <%# ending 'card' div %>
-      <% end %>
-    </div>
-  </div>
 <% end %>
 
 
