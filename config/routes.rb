@@ -11,9 +11,13 @@ Rails.application.routes.draw do
     resources :recipes, only: %i[create update]
   end
   resources :recipes, only: [] do
-    resources :bookings, only: %i[new create ] do
+    resources :bookings, only: %i[new create] do
       resources :chatrooms, only: :show
     end
   end
   resources :recipes, only: %i[index show destroy]
+  resources :bookings, only: %i[edit update]
+
+  patch 'bookings/:id/accepted', to: "bookings#accepted", as: 'accepted'
+  patch 'bookings/:id/declined', to: "bookings#declined", as: 'declined'
 end

@@ -1,4 +1,33 @@
 class BookingsController < ApplicationController
+
+  def update
+    @booking = Booking.find(params[:id])
+
+
+    unless @booking.user == current_user
+      redirect_to :dashboard, alert: "You are not authorized to update this booking."
+      return
+    end
+
+    if @booking.update(booking_params)
+      redirect_to :dashboard, notice: "Booking was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def accepted
+    @booking = Booking.find(params[:id])
+    @booking.accepted!
+    redirect_to :dashboard
+  end
+
+  def declined
+    @booking = Booking.find(params[:id])
+    @booking.declined!
+    redirect_to :dashboard
+  end
+
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @booking = Booking.new
