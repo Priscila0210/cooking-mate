@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
   validates :title, presence: true
   # validates :length, presence: true
   validates :description, presence: true
+  has_one_attached :photo
   validates :level_of_difficulty, presence: true, inclusion: { in: ["easy", "medium", "hard"] }
   has_many :recipes_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipes_ingredients

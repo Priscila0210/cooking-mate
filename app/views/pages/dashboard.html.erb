@@ -1,22 +1,22 @@
 <div class="container mt-4">
 
   <h1 class="mt-2" id="color">Hello <%= current_user.nickname %>!</h1>
-  <div class="card" data-controller="toggle">
-    <div class="card-header">
-     <button data-toggle-target ="accordion" class="accordion" id="recipes">My Recipes</button>
 
-      <div class="panel" class="d-flex flex-column justify-content-around align-items-end" >
-        <%# <button class= "btn btn-ghost mt-2" data-action="click->toggle#recipe" class="float-end ">Add</button> %>
-        <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#add">
-          add
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          My Recipes
         </button>
-        <div class="card-body mb-5">
-
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#add">
+            add
+          </button>
           <% @user.recipes.each do |recipe| %>
-            <%= render "recipes/editform", recipe: recipe %>
-
-            <div data-controller="toggle" class="recipe-item border p-3 mb-4">
-              <div data-toggle-target="details">
+          <div class="recipe-item border p-3 mb-4">
+              <%# <div data-toggle-target="details"> %>
                 <h4 class="ti"><strong id="color">Title:</strong> <%= recipe.title %></h4>
                 <p><strong id="color">Description:</strong> <%= recipe.description %></p>
                 <p><strong id="color">Level of Difficulty:</strong> <%= recipe.level_of_difficulty %></p>
@@ -26,40 +26,42 @@
                             recipe_path(recipe),
                             data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete that recipe?" },
                             class:"fa-solid fa-trash mb-5" %>
-              </div>
+              <%# </div> %>
               <%# <div  data-id="<%= @recipe.id %>
-              <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#edit">
+              <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#edit-<%= recipe.id %>">
                 <i class="fa-regular fa-pen-to-square"></i>
               </button>
-
-                <%# <button data-action="click->toggle#editRecipe click->toggle#updatetoggle"  class= "btn btn-ghost" ></button>
-                  <div data-toggle-target="editRecipe" class="d-none"> %>
-                  <%# </div> %>
-              <%# </div> %>
-            </div>
-          <% end %>
+          </div>
+        </div>
+        <%= render "recipes/editform", recipe: recipe %>
+        <% end %>
+      </div>
+      <%= render "recipes/form", recipe: @recipe %>
+      </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+          Booking Details
+        </button>
+      </h2>
+      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+        <%= render "recipes/mybookingsdetails" %>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          My invitations
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <%= render "recipes/myrequests" %>
+          <%# add link to the created chatroom %>
         </div>
       </div>
     </div>
   </div>
-<%= render "recipes/form", recipe: @recipe %>
-  <div class="card" data-controller="toggle">
-    <div class="card-header">
-      <button data-toggle-target ="accordion" class="accordion">Booking Details</button>
-        <div class="panel">
-         <%= render "recipes/mybookingsdetails" %>
-        </div>
-    </div>
-  </div>
-
-
-  <div class="card" data-controller="toggle">
-    <div class="card-header">
-      <button data-toggle-target ="accordion" class="accordion">My invitations</button>
-        <div class="panel">
-         <%= render "recipes/myrequests" %>
-        </div>
-    </div>
-  </div>
-
 </div>
