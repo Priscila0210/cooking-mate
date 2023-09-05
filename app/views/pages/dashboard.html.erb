@@ -11,7 +11,8 @@
       </h2>
       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
-          <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#add">
+          <%# <input type="button" value="Click Me" style="float: right;"> %>
+          <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#add" style="float: right;">
             add
           </button>
           <% @user.recipes.each do |recipe| %>
@@ -28,7 +29,7 @@
                             class:"fa-solid fa-trash mb-5" %>
               <%# </div> %>
               <%# <div  data-id="<%= @recipe.id %>
-              <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#edit-<%= recipe.id %>">
+              <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" style="float: right;" data-bs-target="#edit-<%= recipe.id %>">
                 <i class="fa-regular fa-pen-to-square"></i>
               </button>
           </div>
