@@ -1,0 +1,18 @@
+
+<div>
+  <%# <%  @all_accepted_bookings.each do |booking| %>
+  <%# <%= booking.status %>
+  <%# <% @chatroom = Chatroom.find_by(booking_id: booking) %>
+  <%# <%= link_to "open a chat", chatroom_path(@chatroom.id)%>
+
+  You will cook
+  <%  @mybookings.where(status: "accepted").each do |booking| %>
+   <% @chatroom = Chatroom.find_by(booking_id: booking) %>
+    <%= link_to "#{@chatroom.booking.recipe.title} with #{@chatroom.recipient_name(current_user)}" , chatroom_path(@chatroom.id)%>
+  <% end %>
+  <p>You will learn to cook</p>
+  <%  @my_requests.where(status: "accepted").each do |booking| %>
+   <% @chatroom = Chatroom.find_by(booking_id: booking) %>
+    <%= link_to "#{@chatroom.booking.recipe.title} with #{@chatroom.recipient_name(current_user)}", chatroom_path(@chatroom.id)%>
+  <% end %>
+</div>

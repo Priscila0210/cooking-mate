@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
   def accepted
     @booking = Booking.find(params[:id])
     @booking.accepted!
-    @chatroom = Chatroom.create(booking_id: @booking.id)
+    Chatroom.create(booking_id: @booking.id)
     redirect_to :dashboard
   end
 

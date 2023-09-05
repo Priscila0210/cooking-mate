@@ -13,6 +13,10 @@ class PagesController < ApplicationController
     @mybookings = Booking.where(user_id: current_user.id)
     @my_recipes_ids = Recipe.where(user: current_user).pluck(:id)
     @my_requests = Booking.where(recipe_id: @my_recipes_ids)
+    # @all_accepted_bookings = []
+    # @all_accepted_bookings << @mybookings.where(status: "accepted")
+    # @all_accepted_bookings << @my_requests.where(status: "accepted")
+
   end
 
 

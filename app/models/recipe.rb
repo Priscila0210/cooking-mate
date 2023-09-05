@@ -14,7 +14,7 @@ class Recipe < ApplicationRecord
   has_many :recipes_diets, dependent: :destroy
   has_many :diets, through: :recipes_diets
   accepts_nested_attributes_for :recipes_diets
-
+  has_many :bookings
   pg_search_scope :global_search,
                   against: [ :title, :description ],
                   associated_against: {

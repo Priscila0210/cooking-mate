@@ -93,12 +93,13 @@
         <button class="btn btn-ghost">Italian</button>
         <button class="btn btn-ghost">American</button>
         <button class="btn btn-ghost">Pumpkin</button>
+      </div>
     </div>
-      <% if !@recipes_result.empty?  %>
-      <%= render partial: "recipes/list", locals: {recipes: @recipes_result} %>
-      <% else %>
-       <%=   render partial: "recipes/empty" %>
-      <% end%>
+    <% if !@recipes_result.empty?  %>
+    <%= render partial: "recipes/list", locals: {recipes: @recipes_result} %>
+    <% else %>
+      <%=   render partial: "recipes/empty" %>
+    <% end%>
 
 
      <%# <%= render "recipes/empty"  %>
