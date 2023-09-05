@@ -15,10 +15,10 @@
 
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Profile", "/dashboard", class: "nav-link" %>
+           <%= link_to "My recipes","#{dashboard_path(session: "recipes" )}#recipes", class: "nav-link", id: "color" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#{dashboard_path}#messages", class: "nav-link" %>
+            <%= link_to "Messages", "#{dashboard_path(session: "messages" )}#messages", class: "nav-link", id: "color"  %>
           </li>
           <li class="nav-item dropdown">
 
@@ -30,7 +30,7 @@
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-              <%= link_to "My recipes","#{dashboard_path}#recipes", class: "dropdown-item", id: "color" %>
+              <%= link_to "Profile", "/dashboard", class: "dropdown-item", id: "color"  %>
 
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item", id: "color" %>
             </div>
