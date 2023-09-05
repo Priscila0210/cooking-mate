@@ -11,7 +11,9 @@
       </h2>
       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
+
            <%= render 'recipes/myrecipes', locals: { user: @user } %>
+
         </div>
         <%= render "recipes/form", recipe: @recipe %>
       </div>
