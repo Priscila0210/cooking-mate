@@ -6,21 +6,27 @@
   width: 40px;
 }
 
+.card-image {
+  width: 100%;
+  height: 300px;
+  object-fit: fill;
+}
+
 .trip-infos {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  position: relative;
   &-avatar {
     position: absolute;
     right: 5px;
-    top: -308px;
+    top: -55px;
   }
   img {
     border-radius: 25px;
   }
 }
-
 
 
 
@@ -77,7 +83,7 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
   align-items: center;
-  position: relative
+  position: relative;
 }
 
 .card-title{
@@ -145,6 +151,33 @@
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
+.recipe-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+
+}
+.recipe-details{
+  img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+}
+
+.recipe-card:hover{
+  transform: translateY(-5px);
+}
+
+.recipe-card{
+  background-color: #f5f5f5;
+  border: 1px solid #cac1c1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+}
 
 .booking-list {
   display: grid;

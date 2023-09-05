@@ -11,33 +11,14 @@
       </h2>
       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
-          <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#add">
-            add
-          </button>
-          <% @user.recipes.each do |recipe| %>
-          <div class="recipe-item border p-3 mb-4">
-              <%# <div data-toggle-target="details"> %>
-                <h4 class="ti"><strong id="color">Title:</strong> <%= recipe.title %></h4>
-                <p><strong id="color">Description:</strong> <%= recipe.description %></p>
-                <p><strong id="color">Level of Difficulty:</strong> <%= recipe.level_of_difficulty %></p>
-                <p><strong id="color">Cuisine:</strong> <%= recipe.cuisine.name %></p>
-                <p><strong id="color">Preparation time:</strong> <%= recipe.length %></p>
-                <%= link_to "" ,
-                            recipe_path(recipe),
-                            data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete that recipe?" },
-                            class:"fa-solid fa-trash mb-5" %>
-              <%# </div> %>
-              <%# <div  data-id="<%= @recipe.id %>
-              <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#edit-<%= recipe.id %>">
-                <i class="fa-regular fa-pen-to-square"></i>
-              </button>
-          </div>
-        <%= render "recipes/editform", recipe: recipe %>
-        <% end %>
+
+           <%= render 'recipes/myrecipes', locals: { user: @user } %>
+
         </div>
         <%= render "recipes/form", recipe: @recipe %>
       </div>
     </div>
+
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingTwo">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -45,21 +26,28 @@
         </button>
       </h2>
       <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+
         <div class="accordion-body">
         <%= render "recipes/mybookingsdetails" %>
         <%= render "recipes/mydates" %>
         </div>
+
       </div>
     </div>
+
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingThree">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          My requests
+
+          my requests
+
         </button>
       </h2>
       <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
+
         <%= render "recipes/mybookingsdetails" %>
+
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+
  <div class="cards-container row" data-search-target="list">
   <% @recipes_result.each do |recipe| %>
     <div class="card mt-5 col-sm-3">
@@ -32,5 +33,6 @@
       <%= render "shared/card", recipe: recipe %>
       <%= render "shared/user", recipe: recipe %>
       <%= render "booking", recipe: recipe, booking: @booking %>
+
   <% end %>
 </div>

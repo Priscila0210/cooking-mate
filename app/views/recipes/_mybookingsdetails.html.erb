@@ -1,9 +1,9 @@
 <h4>Your future bookings!</h4>
 <div class="booking-list" >
-  <% @mybookings.each do |booking| %>
+  <% @mybookings.not_declined.each do |booking| %>
     <div class="booking-card" data-controller ="edit-booking" >
       <div data-edit-booking-target = "bookingcard" class="">
-        <button data-action="click->edit-booking#toggleedit ">edit</button>
+        <button data-action="click->edit-booking#toggleedit ", class= "btn btn-ghost">edit</button>
 
           <div class="user-nickname">
             <h4><strong>future CookingMate:</strong> <%= User.find(booking.recipe.user_id).nickname %></h4>
