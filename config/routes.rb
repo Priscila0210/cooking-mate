@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
   resources :recipes, only: [] do
 
-    resources :bookings, only: %i[new create] 
+    resources :bookings, only: %i[new create]
   end
   resources :recipes, only: %i[index show destroy]
   resources :bookings, only: %i[edit update]
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   patch 'bookings/:id/accepted', to: "bookings#accepted", as: 'accepted'
   patch 'bookings/:id/declined', to: "bookings#declined", as: 'declined'
 
-  resources :chatrooms, only: :show
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 
 end

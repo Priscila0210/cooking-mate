@@ -90,6 +90,13 @@
       </div>
     </div>
 
+    <% if !@recipes_result.empty?  %>
+    <%= render partial: "recipes/list", locals: {recipes: @recipes_result} %>
+    <% else %>
+      <%=   render partial: "recipes/empty" %>
+    <% end%>
+
+
     <% if @recipes_result.present?  %>
       <%= render partial: "recipes/list", locals: {recipes: @recipes_result, prior_bookings: @prior_bookings} %>
     <% else %>

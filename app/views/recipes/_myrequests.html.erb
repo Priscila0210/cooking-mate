@@ -11,6 +11,10 @@
       <% if booking.status == 'pending' %>
        <%= link_to "Accept" , accepted_path(booking),class: "btn btn-sm btn-ghost", data: { turbo_method: :patch } %>
        <%= link_to "Decline", declined_path(booking),class: "btn btn-sm btn-ghost", data: { turbo_method: :patch } %>
+
+      <% if booking.accepted? %>
+      <%= link_to "open a chat", chatroom_path(booking.chatroom)%>
+
       <% end %>
     </div>
   <% end %>

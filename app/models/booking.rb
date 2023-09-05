@@ -3,6 +3,9 @@ class Booking < ApplicationRecord
   belongs_to :user
   validates :date, presence: true
   enum status: { pending: 0, accepted: 1, declined: 2 }
+
+  has_one :chatroom
+
   before_update :reject_other_bookings, if: :will_save_change_to_status?
 
   private
@@ -13,4 +16,5 @@ class Booking < ApplicationRecord
       other_pending_bookings.update_all(status: 'declined')
     end
   end
+
 end
