@@ -60,12 +60,13 @@
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 0,6px;
+  grid-gap: 8px;
   // margin: auto;
   // margin-left: 20px !important;
   // margin-right: 20px !important;
   padding: 20px !important;
   grid-auto-rows: auto;
+  border-radius: 4px;
 
 }
 
@@ -97,7 +98,7 @@
 
 .card-title {
   margin-top: 0rem;
-  font-size: 16px;
+  font-size: 1rem;
   align-self: flex-start;
   // height: 25px;
 
@@ -223,7 +224,7 @@
 
 
 h4 {
-  font-size: 16px;
+  font-size: 10px;
   margin-top: 10px;
 }
 
@@ -238,4 +239,53 @@ h4 {
 .float-end {
   width: 40px;
 
+}
+
+
+.card-trip {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 16px;
+  height: 300px;
+  border-radius: 8px;
+}
+
+.card-trip > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-trip h2 {
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 8px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-trip .card-trip-infos {
+  padding: 16px;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  gap: 16px;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 3px;
+  top: -200px;
+  width: 40px;
+}
+
+#small-btn {
+  padding: 0px 9px;
+  font-size: 14px;
 }

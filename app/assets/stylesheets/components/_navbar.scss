@@ -12,6 +12,30 @@
 }
 
 a.nav-link {
-  color: #85E6C5;
+  // color: #85E6C5;
+  color: rgb(103, 237, 114);
+
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
+
+
+a.nav-link:hover {
+  background: linear-gradient(rgb(103, 237, 114));
+  color: #03faf2;
+}
+
+
+a.nav-link {
+  opacity: 1;
+
+  color: rgb(103, 237, 114);
+  // border: 1px solid;
+  /* font-size: 30px; */
+
+}
+
 
