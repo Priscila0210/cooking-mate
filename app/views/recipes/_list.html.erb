@@ -2,8 +2,8 @@
  <div class="cards-container row" data-search-target="list">
   <% @recipes_result.each do |recipe| %>
     <div class="card mt-5 col-sm-3">
-        <%= cl_image_tag(Rails.env.production? ? "production/#{recipe.title}" : "development/#{recipe.title}", height: 220, width: "100%")  %>
-        <%# <%= cl_image_tag @recipe.photo.key, height: 220, width: 100%, crop: :fill %>
+        <%# <%= cl_image_tag(Rails.env.production? ? "production/#{recipe.title}" : "development/#{recipe.title}", height: 220, width: "100%")  %>
+        <%= cl_image_tag recipe.photo.key, height: 220, width: "100%", crop: :fill %>
         <h5 class="card-title"><%= recipe.title %> by <%= recipe.user.nickname %></h5>
         <div class="trip-infos">
             <%# <%= link_to profile_path(recipe.user), class: "trip-infos-avatar" do %>
@@ -14,7 +14,7 @@
             <%# <% end %>
               <a href="#" data-bs-toggle="modal" data-bs-target="#user-<%= recipe.user.id %>">
                 <%= content_tag :span, class: "trip-infos-avatar" do %>
-                <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg", class: "shadow-sm", width: 50, height: 50 %>
+                <%= cl_image_tag recipe.user.avatar.key, class: "shadow-sm", width: 50, height: 50 %>
               <% end %>
               </a>
             <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description-<%= recipe.id %>">

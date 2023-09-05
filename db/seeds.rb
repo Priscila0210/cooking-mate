@@ -10,6 +10,8 @@ require 'faker'
 require "open-uri"
 
 puts "Cleaning up"
+Message.destroy_all
+Chatroom.destroy_all
 UsersCuisine.destroy_all
 RecipesDiet.destroy_all
 UsersDiet.destroy_all

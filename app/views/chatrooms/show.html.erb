@@ -6,10 +6,22 @@
   <h1><%= @chatroom.booking.recipe.title %> conversation with <%= @chatroom.recipient_name(current_user) %></h1>
 
   <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
+  <% @chatroom.messages.each do |message| %>
 
     <%= render "messages/message", message: message %>
      <% end %>
+    </div>
+     <%= simple_form_for [@chatroom, @message],
+   html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+%>
+  <%= f.input :content,
+    label: false,
+    placeholder: "Message #",
+    wrapper_html: {class: "flex-grow-1"}%>
 
-  </div>
+
+  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
+
+
 </div>
