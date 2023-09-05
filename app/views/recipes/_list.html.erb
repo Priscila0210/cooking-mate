@@ -1,8 +1,8 @@
-<div class="row my-3">
+<div class="row my-3" data-search-target="list">
   <% @recipes_result.each do |recipe| %>
     <div class="col-lg-4 col-md-4 col-sm-4">
       <div class="card-trip">
-        <%= cl_image_tag(Rails.env.production? ? "production/#{recipe.title}" : "development/#{recipe.title}", height: 220, width: "100%") %>
+        <%= cl_image_tag recipe.photo.key, height: 220, width: "100%", crop: :fill %>
         <div class="card-trip-infos">
           <h5 class="card-title"><%= recipe.title %></h5>
           <div class="d-flex justify-content-between align-bottom">
@@ -17,13 +17,13 @@
               <% end %>
             </div>
           </div>
-          <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg",
+          <%= cl_image_tag recipe.user.avatar.key,
               class: "shadow-sm card-trip-user avatar-bordered",
               width: 50, height: 50,
               data: { bs_toggle: "modal", bs_target: "#user-#{recipe.user.id}" } %>
 
           <%= render "shared/card", recipe: recipe %>
-          <%#= render "shared/user", recipe: recipe %>
+          <%= render "shared/user", recipe: recipe %>
           <%= render "booking", recipe: recipe, booking: @booking %>
         </div>
       </div>
