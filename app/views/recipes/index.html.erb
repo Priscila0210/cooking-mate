@@ -1,8 +1,4 @@
-
-<%# marcel work hard here !!! %>
-
 <% if !user_signed_in? %>
-
   <div class="mb-5 banner">
     <div class="h-100 text-center">
       <div class="row h-100">
@@ -21,13 +17,13 @@
     </div>
   </div>
 
-<a href="#cards">
-  <svg class="arrows">
-    <path class="a1" d="M0 0 L30 32 L60 0"></path>
-    <path class="a2" d="M0 20 L30 52 L60 20"></path>
-    <path class="a3" d="M0 40 L30 72 L60 40"></path>
-  </svg>
-</a>
+  <a href="#cards">
+    <svg class="arrows">
+      <path class="a1" d="M0 0 L30 32 L60 0"></path>
+      <path class="a2" d="M0 20 L30 52 L60 20"></path>
+      <path class="a3" d="M0 40 L30 72 L60 40"></path>
+    </svg>
+  </a>
 
   <div id="cards" class="cards-grid mx-4">
     <div class="card-category px-4">
@@ -41,14 +37,13 @@
         invitations to a culinary meeting. That happened 1 year ago,
         until today we are still friends and we discovered that besides
         food we have many other professional and personal affinities.
-      </cite>
+      </footer>
     </div>
 
     <div class="card-category px-4">
       <strong><mark>Ricky Martin</mark></strong>
 
       <footer class="quote">
-      <p></p>
       <i class="fa-solid fa-quote-left" style="color: grey"></i>
         My name is Martin, my new friends here on the app call me Ricky Martin the Big Boss,
         because I prepared for them one of my culinary specialties from Spain Paeja with baked seafood.
@@ -68,13 +63,11 @@
         thank you.
       </footer>
     </div>
-  </div>
+
+    </div>
 
 <% else %>
-
-
   <div class="row justify-content-center" data-controller="search">
-
     <div class="col-sm-8 my-3" >
       <%= form_with url: recipes_path, method: :get, html: {class: "d-flex", data: {search_target: "form"}} do %>
         <%= text_field_tag :query,
@@ -93,31 +86,18 @@
         <button class="btn btn-ghost">Italian</button>
         <button class="btn btn-ghost">American</button>
         <button class="btn btn-ghost">Pumpkin</button>
+        </div>
     </div>
-      <% if !@recipes_result.empty?  %>
-      <%= render partial: "recipes/list", locals: {recipes: @recipes_result} %>
-      <% else %>
-       <%=   render partial: "recipes/empty" %>
-      <% end%>
-
-
-     <%# <%= render "recipes/empty"  %>
-        <%# <%= render "recipes/list"  %>
   </div>
 
 
+
+<% if !@recipes_result.empty?  %>
+  <div class="container" data-search-target="list">
+    <%= render partial: "recipes/list", locals: {recipes: @recipes_result} %>
+  </div>
+<% else %>
+  <%= render partial: "recipes/empty" %>
+<% end%>
 <% end %>
-
-
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    This footer is made by marcel with <i class="fas fa-heart"></i>
-  </div>
-</div>
+<%= render "shared/footer" %>

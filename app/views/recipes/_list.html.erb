@@ -1,36 +1,32 @@
- <div class="cards-container" data-search-target="list">
-      <% @recipes_result.each do |recipe| %>
-        <div class="card mt-5">
-           <%= cl_image_tag(Rails.env.production? ? "production/#{recipe.title}" : "development/#{recipe.title}", height: 220, width: "100%")  %>
-           <%# <%= cl_image_tag @recipe.photo.key, height: 220, width: 100%, crop: :fill %>
-            <h5 class="card-title"><%= recipe.title %> by <%= recipe.user.nickname %></h5>
-            <div class="trip-infos">
-                <%# <%= link_to profile_path(recipe.user), class: "trip-infos-avatar" do %>
+<div class="row my-3">
+  <% @recipes_result.each do |recipe| %>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <div class="card-trip">
+        <%= cl_image_tag(Rails.env.production? ? "production/#{recipe.title}" : "development/#{recipe.title}", height: 220, width: "100%") %>
+        <div class="card-trip-infos">
+          <h5 class="card-title"><%= recipe.title %></h5>
+          <div class="d-flex justify-content-between align-bottom">
+            <p> by <%= recipe.user.nickname %></p>
+            <div>
+              <button type="button" id="small-btn" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description-<%= recipe.id %>">more</button>
 
-                  <%# <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/v1693573408/development/Marcia.jpg", class: "shadow-sm", width: 50, height: 50 %>
-                  <%# <%= cl_image_tag recipe.user.avatar.key, height: 50, width: 50, crop: :fill %>
-
-                <%# <% end %>
-                 <a href="#" data-bs-toggle="modal" data-bs-target="#user-<%= recipe.user.id %>">
-                    <%= content_tag :span, class: "trip-infos-avatar" do %>
-                    <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg", class: "shadow-sm", width: 50, height: 50 %>
-                  <% end %>
-                  </a>
-                <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description-<%= recipe.id %>">
-                      more
-                </button>
+              <% if @prior_bookings.where(recipe: recipe, user: current_user).count == 0 %>
+                <button type="button" id="small-btn" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">book</button>
+              <% else %>
+                already booked!
+              <% end %>
             </div>
-              <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
-                <% if bookings.count == 0 %>
-                  <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">
-                    book
-                  </button>
-                <% else %>
-                  already booked!
-                <% end %>
           </div>
+          <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg",
+              class: "shadow-sm card-trip-user avatar-bordered",
+              width: 50, height: 50,
+              data: { bs_toggle: "modal", bs_target: "#user-#{recipe.user.id}" } %>
+
           <%= render "shared/card", recipe: recipe %>
-          <%= render "shared/user", recipe: recipe %>
+          <%#= render "shared/user", recipe: recipe %>
           <%= render "booking", recipe: recipe, booking: @booking %>
-      <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
