@@ -1,5 +1,5 @@
  <div class="cards-container" data-search-target="list">
-  <% recipes.each do |recipe| %>
+  <% @recipes_result.each do |recipe| %>
     <div class="card mt-5">
       <%= cl_image_tag recipe.photo.key, class: 'card-image' %>
       <h5 class="card-title"><%= recipe.title %> by <%= recipe.user.nickname %></h5>
