@@ -30,7 +30,6 @@
 
 
 
-
 .fa-solid {
 
   text-decoration: none;
@@ -152,6 +151,33 @@
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
+.recipe-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+
+}
+.recipe-details{
+  img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+}
+
+.recipe-card:hover{
+  transform: translateY(-5px);
+}
+
+.recipe-card{
+  background-color: #f5f5f5;
+  border: 1px solid #cac1c1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+}
 
 .booking-list {
   display: grid;
