@@ -64,11 +64,12 @@
       </footer>
     </div>
 
-    </div>
+ </div>
 
 <% else %>
   <div class="row justify-content-center" data-controller="search">
     <div class="col-sm-8 my-3" >
+
       <%= form_with url: recipes_path, method: :get, html: {class: "d-flex", data: {search_target: "form"}} do %>
         <%= text_field_tag :query,
             params[:query],
@@ -77,27 +78,39 @@
             data: {
               search_target: "input",
               action: "keyup->search#update"
-              }
-        %>
+              }%>
         <%= submit_tag "Search", name: "", class: "btn btn-ghost" %>
       <% end %>
+
       <div data-action="click->search#filter" data-search-target="button">
+
         <button class="btn btn-ghost">Vegetarian</button>
         <button class="btn btn-ghost">Italian</button>
         <button class="btn btn-ghost">American</button>
         <button class="btn btn-ghost">Pumpkin</button>
-        </div>
+
+       </div>
     </div>
+
+
+    <% if @recipes_result.present?  %>
+      <%= render partial: "recipes/list", locals: {recipes: @recipes_result, prior_bookings: @prior_bookings} %>
+    <% else %>
+      <%= render partial: "recipes/empty" %>
+    <% end%>
+
   </div>
 
-
-
-<% if !@recipes_result.empty?  %>
-  <div class="container" data-search-target="list">
-    <%= render partial: "recipes/list", locals: {recipes: @recipes_result} %>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
   </div>
-<% else %>
-  <%= render partial: "recipes/empty" %>
-<% end%>
-<% end %>
-<%= render "shared/footer" %>
+  <div class="footer-copyright">
+    This footer is made by marcel with <i class="fas fa-heart"></i>
+  </div>
+</div>
+

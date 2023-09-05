@@ -1,0 +1,30 @@
+<div class="accordion-body">
+  <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#add">
+    add
+  </button>
+
+  <div class= "recipe-list">
+    <% @user.recipes.each do |recipe| %>
+    <div class="recipe-card">
+        <%# <div data-toggle-target="details"> %>
+         <div class="recipe-details">
+            <h4 class="ti"><strong id="color">Title:</strong> <%= recipe.title %></h4>
+            <%= cl_image_tag recipe.photo.key  %>
+            <p><strong id="color">Description:</strong> <%= recipe.description %></p>
+            <p><strong id="color">Level of Difficulty:</strong> <%= recipe.level_of_difficulty %></p>
+            <p><strong id="color">Cuisine:</strong> <%= recipe.cuisine.name %></p>
+         </div>
+          <%= link_to "" ,
+                      recipe_path(recipe),
+                      data: { turbo_method: :delete, turbo_confirm: "Are you sure to delete that recipe?" },
+                      class:"fa-solid fa-trash mb-5" %>
+        <%# </div> %>
+        <%# <div  data-id="<%= @recipe.id %>
+        <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#edit-<%= recipe.id %>">
+          <i class="fa-regular fa-pen-to-square"></i>
+        </button>
+    </div>
+    <%= render "recipes/editform", recipe: recipe %>
+    <% end %>
+  </div>
+</div>

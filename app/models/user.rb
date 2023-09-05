@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :interested_in, inclusion: {in: ["only friends", "open to anything"]}
   has_many :recipes
   has_one_attached :avatar
+  # has_many :received_bookings, model: { :booking }, through: :recipes
+  # has_many :chatrooms, through: :bookings
 end
