@@ -1,5 +1,5 @@
-<div class="modal fade" id="edit-<%= recipe.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
 
@@ -8,26 +8,26 @@
       </div>
 
       <div class="modal-body">
-        <%= simple_form_for [current_user, recipe], remote: true do |f| %>
-          <%= f.error_notification %>
-          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%= simple_form_for [current_user, recipe], remote: true do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-          <div class="form-inputs">
-            <%= f.input :title %>
-            <%= f.input :length %>
-            <%= f.input :description %>
-            <%= f.input :cuisine, collection: Cuisine.all, input_html: { selected: recipe.cuisine.id } %>
-            <%= f.input :level_of_difficulty, collection: ['easy', 'medium', 'hard'] %>
-            <%= f.association :ingredients, collection: Ingredient.all, as: :check_boxes, include_hidden: false,
-                      input_html: { multiple: true, selected: recipe.ingredients.pluck(:name) } %>
-            <%= f.association :diets, collection: Diet.all, as: :check_boxes, include_hidden: false,
-                      input_html: { multiple: true, selected: recipe.diets.pluck(:name) } %>
-            <div class="form-actions">
-              <%= f.button :submit, "Update Recipe", class: "btn btn-ghost btn-block border border-dark rounded-pill" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :length %>
+    <%= f.input :description %>
+    <%= f.input :cuisine, collection: Cuisine.all, input_html: { selected: recipe.cuisine.id } %>
+    <%= f.input :level_of_difficulty, collection: ['easy', 'medium', 'hard'] %>
+    <%= f.association :ingredients, collection: Ingredient.all, as: :check_boxes, include_hidden: false,
+               input_html: { multiple: true, selected: recipe.ingredients.pluck(:name) } %>
+   <%= f.association :diets, collection: Diet.all, as: :check_boxes, include_hidden: false,
+               input_html: { multiple: true, selected: recipe.diets.pluck(:name) } %>
+    <div class="form-actions">
+      <%= f.button :submit, "Update Recipe", class: "btn btn-ghost btn-block border border-dark rounded-pill" %>
+    </div>
+  </div>
+<% end %>
+</div>
     </div>
   </div>
 </div>

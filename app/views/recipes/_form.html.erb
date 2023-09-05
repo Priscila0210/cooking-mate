@@ -33,6 +33,7 @@
 
   <div class="form-group">
     <%= f.input :level_of_difficulty, collection: ['easy', 'medium', 'hard'], label: 'Difficulty', class: 'form-control' %>
+  </div>
 
   <div class="form-group">
     <%= f.simple_fields_for :recipes_ingredients do |i| %>
@@ -56,10 +57,6 @@
                   item_wrapper_class: 'form-check',
                   include_hidden: false %>
     <% end %>
-  </div>
-
-  <div class="form-group">
-    <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-group">

@@ -21,6 +21,8 @@
     </div>
   </div>
 
+
+
 <a href="#cards">
   <svg class="arrows">
     <path class="a1" d="M0 0 L30 32 L60 0"></path>
@@ -28,6 +30,10 @@
     <path class="a3" d="M0 40 L30 72 L60 40"></path>
   </svg>
 </a>
+
+
+
+
 
   <div id="cards" class="cards-grid mx-4">
     <div class="card-category px-4">
@@ -68,43 +74,68 @@
         thank you.
       </footer>
     </div>
+
+    <%# <div class="card-category px-5 mx-3">
+      <strong><mark>Alejandro Salles</mark></strong>
+      <p></p>
+      <footer class="blockquote-footer">
+      I would like to thank this one because it was through him that I had wonderful
+      moments with my friend Emma at that time. After a year on the app,
+      Emma and I got married and learned several new dishes.
+      Today in our house we are teaching our friends and neighbors how to cook.
+      </footer>
+    </div> %>
   </div>
+
 
 <% else %>
 
-
-  <div class="row justify-content-center" data-controller="search">
-
-    <div class="col-sm-8 my-3" >
-      <%= form_with url: recipes_path, method: :get, html: {class: "d-flex", data: {search_target: "form"}} do %>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
+
             params[:query],
             class: "form-control",
-            placeholder: "Look for your recipes, ingredients, cuisines, diets ....",
-            data: {
-              search_target: "input",
-              action: "keyup->search#update"
-              }
+            placeholder: "Type a keyword"
         %>
+
         <%= submit_tag "Search", name: "", class: "btn btn-ghost" %>
+
       <% end %>
-      <div data-action="click->search#filter" data-search-target="button">
-        <button class="btn btn-ghost">Vegetarian</button>
-        <button class="btn btn-ghost">Italian</button>
-        <button class="btn btn-ghost">American</button>
-        <button class="btn btn-ghost">Pumpkin</button>
     </div>
-      <% if !@recipes_result.empty?  %>
-      <%= render partial: "recipes/list", locals: {recipes: @recipes_result} %>
-      <% else %>
-       <%=   render partial: "recipes/empty" %>
-      <% end%>
+    <div class="cards-container justify-content-center">
+      <% @recipes.each do |recipe| %>
+        <div class="card mt-5">
+           <%= cl_image_tag(Rails.env.production? ? "production/#{recipe.title}" : "development/#{recipe.title}", height: 220, width: "100%")  %>
 
+            <div class="card-title">
+              <h5> <%= recipe.title %> </h5>
+              <p>by <%= recipe.user.nickname %></p>
+            </div>
+            <div class="trip-infos">
+              <%= link_to profile_path(recipe.user), class: "trip-infos-avatar" do %>
+                <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/v1693573408/development/Marcia.jpg", class: "shadow-sm", width: 50, height: 50 %>
+              <% end %>
 
-     <%# <%= render "recipes/empty"  %>
-        <%# <%= render "recipes/list"  %>
+              <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description">
+                more
+              </button>
+              <% bookings = @prior_bookings.where(recipe: recipe, user: current_user) %>
+                <% if bookings.count == 0 %>
+                  <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">
+                    book
+                  </button>
+                <% else %>
+                  already booked!
+              <% end %>
+          </div>
+        </div>
+        <%= render "shared/card", recipe: recipe %>
+        <%= render "booking", recipe: recipe, booking: @booking %>
+      <% end %>
+    </div>
   </div>
-
 
 <% end %>
 
