@@ -3,25 +3,27 @@
     <div class="modal-content">
       <div class="modal-header">
 
-        <h5 class="modal-title" id="exampleModalLabel"><%= recipe.user.nickname %></h5>
+        <h6 class="modal-title" id="exampleModalLabel"><%= recipe.user.nickname %></h6>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
-      <div class="modal-body">
+          <div class="modal-body">
+  <img src="https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg" class="img-circle">
+  <div class="text-info">
+    <p>
+    <strong>Age:</strong> 26 years old<br>
+    <strong>Cooking Level:</strong> Beginner<br>
+    <strong>Diet:</strong> Flexitarian<br>
+    <strong>Availability:</strong> Weekends
+  </p>
+    <%# <p>Age: 26 years old <br> Cooking level: beginner <br> Diet: flexitarian <br> Availability: Weekends</p> %>
+  </div>
+</div>
+      <%# <div class="modal-body">
         <img src="https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg" class="img-circle">
-        <div class="bio">
-          <h5>Marcia Sweet <br>26 years old</h5>
-          <p>Member since: 2023</p>
-          <p>Cooking level: beginner</p>
-          <p>Diet: flexitarian</p>
-          <p>Availability:  Weekends</p>
-          <p>Status: Single, looking for new friends</p>
-          <p>Member since: 2023</p>
-          <p>Cooking level: beginner</p>
-          <p>Diet: flexitarian</p>
-          <p>Availability: Weekends</p>
-        </div>
-      </div>
+        <p>Age: 26 years old  &nbsp;&nbsp;&nbsp;  Cooking level: beginner <br> Diet: flexitarian &nbsp;&nbsp;&nbsp;  Availability: Weekends.</p>
+      </div> %>
     </div>
   </div>
 </div>
+
+        <%# <div class="bio"> %>
