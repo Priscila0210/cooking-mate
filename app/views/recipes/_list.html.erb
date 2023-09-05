@@ -13,8 +13,8 @@
                 <%# <% end %>
                  <a href="#" data-bs-toggle="modal" data-bs-target="#user-<%= recipe.user.id %>">
                     <%= content_tag :span, class: "trip-infos-avatar" do %>
-                    <%= cl_image_tag "https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg", class: "shadow-sm", width: 50, height: 50 %>
-                  <% end %>
+                      <%= cl_image_tag recipe.user.avatar.key, class: "shadow-sm", width: 50, height: 50 %>
+                    <% end %>
                   </a>
                 <button type="button" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description-<%= recipe.id %>">
                       more

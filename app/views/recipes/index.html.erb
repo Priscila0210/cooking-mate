@@ -21,13 +21,13 @@
     </div>
   </div>
 
-<a href="#cards">
-  <svg class="arrows">
-    <path class="a1" d="M0 0 L30 32 L60 0"></path>
-    <path class="a2" d="M0 20 L30 52 L60 20"></path>
-    <path class="a3" d="M0 40 L30 72 L60 40"></path>
-  </svg>
-</a>
+  <a href="#cards">
+    <svg class="arrows">
+      <path class="a1" d="M0 0 L30 32 L60 0"></path>
+      <path class="a2" d="M0 20 L30 52 L60 20"></path>
+      <path class="a3" d="M0 40 L30 72 L60 40"></path>
+    </svg>
+  </a>
 
   <div id="cards" class="cards-grid mx-4">
     <div class="card-category px-4">
@@ -69,12 +69,8 @@
       </footer>
     </div>
   </div>
-
 <% else %>
-
-
   <div class="row justify-content-center" data-controller="search">
-
     <div class="col-sm-8 my-3" >
       <%= form_with url: recipes_path, method: :get, html: {class: "d-flex", data: {search_target: "form"}} do %>
         <%= text_field_tag :query,
@@ -94,11 +90,11 @@
         <button class="btn btn-ghost">American</button>
         <button class="btn btn-ghost">Pumpkin</button>
     </div>
-      <% if !@recipes_result.empty?  %>
-      <%= render partial: "recipes/list", locals: {recipes: @recipes_result} %>
-      <% else %>
-       <%=   render partial: "recipes/empty" %>
-      <% end%>
+    <% if !@recipes_result.empty?  %>
+    <%= render partial: "recipes/list", locals: {recipes: @recipes_result} %>
+    <% else %>
+      <%=   render partial: "recipes/empty" %>
+    <% end%>
 
 
      <%# <%= render "recipes/empty"  %>
