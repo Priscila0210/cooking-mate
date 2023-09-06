@@ -12,8 +12,8 @@ body {
 
 .btn-ghost {
 
-  color: rgb(103, 237, 114);
-  border: 1.8px solid rgb(103, 237, 114);
+  color: #25ff37;
+  border: 1.8px solid #25ff37;
 
   padding: 8px 24px;
   border-radius: 50px;
@@ -28,8 +28,30 @@ body {
 .btn-ghost:hover {
   opacity: 1;
 
-  color:#03faf2;
+  color:#119DA4;
   border: 1px solid;
+  /* font-size: 30px; */
+
+}
+
+.btn-ghost-solid {
+  color: black;
+  border: 1.8px solid #25ff37;
+  background-color: #25ff37;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+  // width: 200px;
+
+}
+
+.btn-ghost-solid:hover {
+  opacity: 1;
+  border: 0 !important;
+  background-color:#119DA4;
+
   /* font-size: 30px; */
 
 }

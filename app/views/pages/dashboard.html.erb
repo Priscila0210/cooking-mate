@@ -17,9 +17,9 @@
 
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingTwo">
-        <button id="color" id="recipes" class="accordion-button <%= params[:session]=="recipes" ? "" : "collapsed" %>" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="<%= params[:session]=="recipes" ? "true" : "false" %>" aria-controls="flush-collapseTwo">
-          My recipes
-        </button>
+          <button id="color" id="recipes" class="accordion-button <%= params[:session]=="recipes" ? "" : "collapsed" %>" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="<%= params[:session]=="recipes" ? "true" : "false" %>" aria-controls="flush-collapseTwo">
+            My recipes
+          </button>
       </h2>
       <div id="flush-collapseTwo" class="accordion-collapse <%= params[:session]=="recipes" ? "collapse show" : "collapse" %>" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
