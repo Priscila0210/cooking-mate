@@ -34,29 +34,32 @@
 
           <div class="form-group">
             <%= f.input :level_of_difficulty, collection: ['easy', 'medium', 'hard'], label: 'Difficulty', class: 'form-control' %>
-
-          <div class="form-group">
-            <%= f.simple_fields_for :recipes_ingredients do |i| %>
-              <%= i.input :ingredient, collection: Ingredient.all,
-                          as: :check_boxes,
-                          label: 'Ingredients',
-                          wrapper_html: { class: 'form-group' },
-                          input_html: { class: 'form-check-input' },
-                          item_wrapper_class: 'form-check',
-                          include_hidden: false %>
-            <% end %>
           </div>
 
-          <div class="form-group">
-            <%= f.simple_fields_for :recipes_diets do |i| %>
-              <%= i.input :diet, collection: Diet.all,
-                          as: :check_boxes,
-                          label: 'Diets',
-                          wrapper_html: { class: 'form-group' },
-                          input_html: { class: 'form-check-input' },
-                          item_wrapper_class: 'form-check',
-                          include_hidden: false %>
-            <% end %>
+          <div class="d-flex justify-content-between">
+            <div class="form-group">
+              <%= f.simple_fields_for :recipes_ingredients do |i| %>
+                <%= i.input :ingredient, collection: Ingredient.all,
+                            as: :check_boxes,
+                            label: 'Ingredients',
+                            wrapper_html: { class: 'form-group' },
+                            input_html: { class: 'form-check-input' },
+                            item_wrapper_class: 'form-check',
+                            include_hidden: false %>
+              <% end %>
+            </div>
+
+            <div class="form-group">
+              <%= f.simple_fields_for :recipes_diets do |i| %>
+                <%= i.input :diet, collection: Diet.all,
+                            as: :check_boxes,
+                            label: 'Diets',
+                            wrapper_html: { class: 'form-group' },
+                            input_html: { class: 'form-check-input' },
+                            item_wrapper_class: 'form-check',
+                            include_hidden: false %>
+              <% end %>
+            </div>
           </div>
 
           <div class="form-group">
