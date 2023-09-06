@@ -22,7 +22,7 @@ body {
   transition: opacity 0.3s ease;
   // width: 200px;
   margin-left: 0.5rem;
-  
+
 
 }
 
@@ -51,9 +51,9 @@ body {
 
 .btn-ghost-solid:hover {
   opacity: 1;
-  border: 0 !important;
+  border: 1px light !important;
   background-color:#119DA4;
-
+  color: #25ff37;
   /* font-size: 30px; */
 
 }
