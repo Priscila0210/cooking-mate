@@ -1,8 +1,15 @@
 
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.user.nickname %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
+<div id="message-<%= message.id %>" class="message">
+  <div class="message-id-details">
+
+    <strong><%= message.user.nickname %></strong>
+    <%= cl_image_tag message.user.avatar.key %>
+  </div>
+
+  <div class="message-content mt-3">
+    <div class="messeage-conent-custom">
+     <p><%= message.content %></p>
+     <p><%= message.created_at.strftime("%l:%M %p") %></p>
+    </div>
+  </div>
+</div>
