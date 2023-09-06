@@ -2,33 +2,34 @@
 <div class="booking-list" >
   <% @mybookings.not_declined.each do |booking| %>
     <div class="booking-card" data-controller ="edit-booking" >
-      <% if !booking.accepted? %>
-        <div data-edit-booking-target = "bookingcard">
-        </div>
-        <button data-action="click->edit-booking#toggleedit ", class= "btn btn-ghost-solid">edit</button>
-          <%= simple_form_for (booking), data: {edit_booking_target: "editform"}, html: { class: "d-none" }   do |f|%>
-          <%= f.input :date %>
-          <%= f.submit %>
-        <% end %>
-      <% else %>
-        <h4 class="booking-status m-2"><strong id="color-green">Status: </strong><%= booking.status %></h4>
-      <% end %>
       <div>
+        <h4 class="booking-status m-2"><strong id="color-green">Status: </strong><%= booking.status %></h4>
         <h4 class="booking-status m-2"><strong id="color-green">You are gonna learn:</strong> <%= booking.recipe.title %></h4>
         <h4 class="booking-status m-2"><strong id="color-green">with:</strong> <%= User.find(booking.recipe.user_id).nickname %></h4>
         <h4 class="booking-status m-2"><strong id="color-green">on:</strong> <%= booking.date %></h4>
-        <div class="text-center">
-          <% if booking.accepted? %>
-            <%= link_to "chat", chatroom_path(booking.chatroom), class: "btn btn-ghost-solid"%>
-          <% end %>
-        </div>
       </div>
-    </div>
-    <% end %>
+
+        <% if !booking.accepted? %>
+          <div data-edit-booking-target = "bookingcard">
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <button data-action="click->edit-booking#toggleedit ", class= "btn btn-ghost-solid">edit</button>
+              <%= simple_form_for (booking), data: {edit_booking_target: "editform"}, html: { class: "d-none" }   do |f|%>
+              <%= f.input :date %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="text-center">
+            <%= link_to "chat", chatroom_path(booking.chatroom), class: "btn btn-ghost-solid"%>
+          </div>
+        <% end %>
+      </div>
+  <% end %>
   <% if @mybookings.not_declined.empty? %>
-  <div>
-    You didn't book anything yet, it's about time to cook!
-    <%= link_to "Browse through the delicious recipes", root_path%>
-  </div>
+    <div>
+      You didn't book anything yet, it's about time to cook!
+      <%= link_to "Browse through the delicious recipes", root_path%>
+    </div>
   <% end %>
 </div>
