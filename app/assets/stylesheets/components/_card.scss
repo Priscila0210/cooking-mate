@@ -35,24 +35,20 @@
   text-decoration: none;
   font-size: 30px;
   padding: 0px 10px;
-  color: rgb(103, 237, 114);
+  color:#25FF37;
 
 }
 
 
 .ti {
   text-decoration: none;
-  font-size: 30px;
+  font-size: 25px;
   padding: 0px 10px;
-  color: rgb(103, 237, 114);
+  padding-bottom: 5px;
+  color: #25FF37;
 
 
 }
-
-
-
-
-
 
 
 // marcel
@@ -71,7 +67,11 @@
 }
 
 #color {
-  color:$beautifulgreen;
+  color:#119DA4;
+}
+
+#color-green {
+  color:#25FF37;
 }
 
 .card {
@@ -203,7 +203,7 @@
 
 .booking-status {
   font-size: 16px;
-  color: #007bff;
+  color: black;
   margin: 0;
 }
 
@@ -291,8 +291,31 @@ h4 {
   font-size: 14px;
 }
 
+
 .shadow-sm {
   height: 40px;
   object-fit: cover;
-  
+}
+
+
+.col-lg-4:hover{
+  transform: translateY(-5px);
+}
+
+.col-lg-4 {
+  background-color: #f5f5f5;
+  // border: 1px solid #cac1c1;
+  padding: 20px;
+  border-radius: 8px;
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+}
+
+.mt-2 {
+  margin-top: 1.3rem !important;
+  // justify-content: space-between;
+  // align-items: flex-end;
+  // position: relative;
+  gap: 1.3rem;
+
 }
