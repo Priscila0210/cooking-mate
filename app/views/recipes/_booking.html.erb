@@ -1,20 +1,19 @@
 <div class="modal fade" id="booking-<%= recipe.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-content ">
+      <div class="modal-header text-center">
         <h5 class="modal-title" id="exampleModalLabel">Book <%= recipe.title %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body d-flex align-items-center justify-content-center">
         <%= simple_form_for [ recipe, booking] do |f| %>
           <div class="form-inputs">
             <%= f.input :date,
                         as: :string,
                         input_html: { data: { controller: "datepicker" } } %>
 
-
-            <div class="form-actions">
-              <%= f.button :submit, class: "btn btn-ghost btn-block border  rounded-pill" %>
+            <div class="form-actions text-center">
+              <%= f.button :submit, class: "btn btn-ghost-solid" %>
             </div>
           </div>
         <% end %>
