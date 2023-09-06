@@ -2,19 +2,19 @@
 <div class="booking-list">
   <% @my_requests.not_declined.each do |booking| %>
     <div class="booking-card">
-      <div class="user-nickname">
-        <h4><strong>future CookingMate:</strong> <%= booking.user.nickname %></h4>
+      <h4 class="booking-status m-2"><strong><%= booking.user.nickname %></strong> would like to cook <strong><%= booking.recipe.title %></strong></h4>
+      <h4 class="booking-status m-2"><strong> on:</strong> <%= booking.date %></h4>
+      <div class="d-flex justify-content-around align-items-center">
+        <% if booking.status == 'pending' %>
+          <%= link_to "Accept" , accepted_path(booking),class: "btn btn-sm btn-ghost-solid", data: { turbo_method: :patch } %>
+          <%= link_to "Decline", declined_path(booking),class: "btn btn-sm btn-ghost-solid", data: { turbo_method: :patch } %>
+        <% end %>
       </div>
-      <h4 class="booking-status"><strong>Status: </strong><%= booking.status %></h4>
-      <h4 class="recipe-title"><strong>You are gonna learn:</strong> <%= booking.recipe.title %></h4>
-      <h4 class="recipe-date"><strong>you booked this recipe on:</strong> <%= booking.date %></h4>
-      <% if booking.status == 'pending' %>
-        <%= link_to "Accept" , accepted_path(booking),class: "btn btn-sm btn-ghost", data: { turbo_method: :patch } %>
-        <%= link_to "Decline", declined_path(booking),class: "btn btn-sm btn-ghost", data: { turbo_method: :patch } %>
-      <% end %>
-      <% if booking.accepted? %>
-        <%= link_to "open a chat", chatroom_path(booking.chatroom)%>
-      <% end %>
+      <div class="text-center">
+        <% if booking.accepted? %>
+          <%= link_to "open a chat", chatroom_path(booking.chatroom), class: "btn btn-sm btn-ghost-solid"%>
+        <% end %>
+      </div>
     </div>
   <% end %>
   <% if @my_requests.not_declined.empty? %>
