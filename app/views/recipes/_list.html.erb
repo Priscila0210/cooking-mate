@@ -21,12 +21,11 @@
               class: "shadow-sm card-trip-user avatar-bordered",
               width: 50, height: 50,
               data: { bs_toggle: "modal", bs_target: "#user-#{recipe.user.id}" } %>
-
-          <%= render "shared/card", recipe: recipe %>
-          <%= render "shared/user", recipe: recipe %>
-          <%= render "booking", recipe: recipe, booking: @booking %>
         </div>
       </div>
     </div>
+    <%= render "shared/card", recipe: recipe %>
+    <%= render "shared/user", recipe: recipe %>
+    <%= render "booking", recipe: recipe, booking: @booking %>
   <% end %>
 </div>
