@@ -1,18 +1,24 @@
 
-<div>
-  <%# <%  @all_accepted_bookings.each do |booking| %>
-  <%# <%= booking.status %>
-  <%# <% @chatroom = Chatroom.find_by(booking_id: booking) %>
-  <%# <%= link_to "open a chat", chatroom_path(@chatroom.id)%>
-
-  You will cook
-  <%  @mybookings.where(status: "accepted").each do |booking| %>
-   <% @chatroom = Chatroom.find_by(booking_id: booking) %>
-    <%= link_to "#{@chatroom.booking.recipe.title} with #{@chatroom.recipient_name(current_user)}" , chatroom_path(@chatroom.id)%>
+<div class="booking-list">
+  <% if @mybookings.where(status: "accepted").empty? && @my_requests.where(status: "accepted").empty? %>
+    No dates planned.
+  <% elsif @my_requests.where(status: "accepted").present? %>
+    <% @my_requests.where(status: "accepted").each do |booking| %>
+    <div class="booking-card text-center">
+      <% @chatroom = Chatroom.find_by(booking_id: booking) %>
+      <h4 class="booking-status m-2"> You will cook <strong id="color-green"><%= @chatroom.booking.recipe.title %></strong> with <strong id="color-green"><%= @chatroom.recipient_name(current_user)%></strong></h4>
+      <div class="d-flex align-items-center justify-content-center">
+        <%= link_to "chat" , chatroom_path(@chatroom.id), class: "btn btn-sm btn-ghost-solid"%>
+      </div>
+    </div>
   <% end %>
-  <p>You will learn to cook</p>
-  <%  @my_requests.where(status: "accepted").each do |booking| %>
-   <% @chatroom = Chatroom.find_by(booking_id: booking) %>
-    <%= link_to "#{@chatroom.booking.recipe.title} with #{@chatroom.recipient_name(current_user)}", chatroom_path(@chatroom.id)%>
+  <% elsif @mybookings.where(status: "accepted").present? %>
+  <%  @mybookings.where(status: "accepted").each do |booking| %>
+    <div class="booking-card text-center">
+      <% @chatroom = Chatroom.find_by(booking_id: booking) %>
+      <h4 class="booking-status m-2">You will learn to cook <strong id="color-green"><%=@chatroom.booking.recipe.title%></strong> with <strong id="color-green"><%=@chatroom.recipient_name(current_user)%></strong></h4>
+      <%= link_to "chat", chatroom_path(@chatroom.id), class: "btn btn-sm btn-ghost-solid text-center"%>
+    </div>
+  <% end %>
   <% end %>
 </div>

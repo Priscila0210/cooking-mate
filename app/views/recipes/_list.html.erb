@@ -5,7 +5,7 @@
       <div class="card-trip">
         <%= cl_image_tag recipe.photo.key, height: 220, width: "100%" %>
         <div class="card-trip-infos">
-          <h5 class="card-title"><%= recipe.title %></h5>
+          <h5 class="card-title mb-2"><%= recipe.title %></h5>
           <div class="d-flex justify-content-between align-bottom">
             <p> by <%= recipe.user.nickname %></p>
             <div class="d-flex justify-content-between align-items-center">
@@ -13,7 +13,7 @@
               <% if @prior_bookings.where(recipe: recipe, user: current_user).count == 0 %>
                 <button type="button" id="small-btn" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">book</button>
               <% else %>
-                <p style="font-size: 15px" id="color">date is coming!</p>
+                <button id="small-btn" class="btn btn-sm btn-ghost-hover booked" style="font-size: 15px, color:#119DA4" >soon!</button>
               <% end %>
             </div>
           </div>

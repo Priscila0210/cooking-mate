@@ -27,9 +27,7 @@
 
   <div id="cards" class="cards-grid mx-4">
     <div class="card-category px-4">
-
       <strong><mark>Eva Mendes</mark></strong>
-
       <footer class="quote">
         <i class="fa-solid fa-quote-left"style="color: grey"></i>
         As soon as I downloaded the app and put a profile picture with
@@ -42,7 +40,6 @@
 
     <div class="card-category px-4">
       <strong><mark>Ricky Martin</mark></strong>
-
       <footer class="quote">
       <i class="fa-solid fa-quote-left" style="color: grey"></i>
         My name is Martin, my new friends here on the app call me Ricky Martin the Big Boss,
@@ -53,7 +50,6 @@
 
     <div class="card-category px-4">
       <strong><mark>Emma Watson</mark></strong>
-
       <footer class="quote">
       <i class="fa-solid fa-quote-left" style="color: grey"></i>
         I have a hectic professional life, I'm always away from home so
@@ -67,10 +63,10 @@
  </div>
 
 <% else %>
-  <div class=" row justify-content-center" data-controller="search">
+  <div class="row justify-content-center" data-controller="search">
     <div class="col-sm-8 my-3" >
 
-      <%= form_with url: recipes_path, method: :get, html: {class: "d-flex", data: {search_target: "form"}} do %>
+      <%= form_with url: recipes_path, method: :get, html: {class: "d-flex  mr-2", data: {search_target: "form"}} do %>
         <%= text_field_tag :query,
             params[:query],
             class: "form-control",

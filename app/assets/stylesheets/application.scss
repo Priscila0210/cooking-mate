@@ -27,6 +27,27 @@
 .modal {
   overflow-y: scroll;
   overflow-y: auto;
+  background-color: rgba(17, 157, 164, 0.5);
+
+}
+
+.modal-body {
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  color:#119DA4;
+
+}
+
+.modal-header {
+  background-color: whitesmoke;
+
+
+}
+
+.modal-title {
+  color: #25FF37;
+  background-color: whitesmoke;
 }
 // .container {
 //   display: grid;

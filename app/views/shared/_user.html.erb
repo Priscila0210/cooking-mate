@@ -2,18 +2,26 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h6 class="modal-title" id="exampleModalLabel"><%= recipe.user.nickname %></h6>
+        <h6 class="modal-title text-center" id="exampleModalLabel" style="font-size:20px"><%= recipe.user.nickname %></h6>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <%= cl_image_tag recipe.user.avatar.key, crop: :fill, class: 'img-circle' %>
-        <div class="my-text-info">
-
-          <h2>Nickname:</h2><p><%= recipe.user.nickname %></p><br>
-          <h2>Age:</h2><p><%= recipe.user.age %></p><br>
-          <h2>Cooking Level:</h2><p><%= recipe.user.cooking_level %></p><br>
-          <h2>Interested in:</h2><p><%= recipe.user.interested_in %></p><br>
-          <h2>Availability:</h2><p><%= recipe.user.availability %></p>
+      <div class="modal-body flex-column justify-content-center align-items-center">
+          <div class="d-flex align-items-center justify-content-between">
+            <%= cl_image_tag recipe.user.avatar.key, crop: :fill, class: 'img-circle mb-5' %>
+            <p class="text-center"><%= recipe.user.description %></p>
+          </div>
+        <div>
+          <h5><strong id="color-green">Age:</strong> <%= recipe.user.age %></h5>
+          <h5><strong id="color-green">Cooking Level:</strong> <%= recipe.user.cooking_level %></h5>
+          <h5><strong id="color-green">Interested in:</strong> <%= recipe.user.interested_in %></h5>
+          <h5><strong id="color-green">Available on:</strong>
+          <% if recipe.user.availability[1] %>
+            <%= recipe.user.availability[0] %>,
+            <%= recipe.user.availability[1] %>
+          <% else %>
+            <%= recipe.user.availability[0] %>
+          <% end %>
+          </h5>
         </div>
       </div>
     </div>

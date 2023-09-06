@@ -32,13 +32,6 @@
 // }
 
 
-
-.modal-body {
-  display: flex;
-  align-items: center;
-  background-color: #25FF37;
-}
-
 .my-text-info {
   background-color: whitesmoke;
   margin-left: 10px;
@@ -57,9 +50,11 @@
 }
 
 .img-circle {
+  margin-right: 16px;
   border-radius: 50%;
   border-style: solid;
   border-width: 2px;
+  border-color:  #25FF37;
 }
 
 // .modal-body {
