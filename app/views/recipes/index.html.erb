@@ -79,7 +79,7 @@
               search_target: "input",
               action: "keyup->search#update"
               }%>
-        <%= submit_tag "Search", name: "", class: "btn btn-ghost" %>
+        <%= submit_tag "Search", name: "", class: "btn btn-ghost-solid" %>
       <% end %>
 
       <div class="mt-2 d-flex align-items-between justify-content-center" data-action="click->search#filter" data-search-target="button">
@@ -92,9 +92,8 @@
        </div>
     </div>
 
-
     <% if @recipes_result.present?  %>
-    <div class="container" data-search-target="list">
+    <div class="container" >
       <%= render partial: "recipes/list", locals: {recipes: @recipes_result, prior_bookings: @prior_bookings} %>
     </div>
     <% else %>

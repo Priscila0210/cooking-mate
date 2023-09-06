@@ -1,5 +1,5 @@
 
-<div class="row my-3">
+<div class="row my-3" data-search-target="list">
   <% @recipes_result.each do |recipe| %>
     <div class="col-lg-4 col-md-4 col-sm-4">
       <div class="card-trip">
@@ -8,13 +8,12 @@
           <h5 class="card-title"><%= recipe.title %></h5>
           <div class="d-flex justify-content-between align-bottom">
             <p> by <%= recipe.user.nickname %></p>
-            <div>
+            <div class="d-flex justify-content-between align-items-center">
               <button type="button" id="small-btn" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description-<%= recipe.id %>">more</button>
-
               <% if @prior_bookings.where(recipe: recipe, user: current_user).count == 0 %>
                 <button type="button" id="small-btn" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">book</button>
               <% else %>
-                already booked!
+                <p style="font-size: 15px" id="color">date is coming!</p>
               <% end %>
             </div>
           </div>
