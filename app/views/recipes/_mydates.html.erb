@@ -2,8 +2,8 @@
 <div class="booking-list">
   <% if @mybookings.where(status: "accepted").empty? && @my_requests.where(status: "accepted").empty? %>
     No dates planned.
-  <% elsif @mybookings.where(status: "accepted").present? %>
-    <% @mybookings.where(status: "accepted").each do |booking| %>
+  <% elsif @my_requests.where(status: "accepted").present? %>
+    <% @my_requests.where(status: "accepted").each do |booking| %>
     <div class="booking-card text-center">
       <% @chatroom = Chatroom.find_by(booking_id: booking) %>
       <h4 class="booking-status m-2"> You will cook <strong id="color-green"><%= @chatroom.booking.recipe.title %></strong> with <strong id="color-green"><%= @chatroom.recipient_name(current_user)%></strong></h4>
@@ -12,8 +12,8 @@
       </div>
     </div>
   <% end %>
-  <% elsif @my_requests.where(status: "accepted").present? %>
-  <%  @my_requests.where(status: "accepted").each do |booking| %>
+  <% elsif @mybookings.where(status: "accepted").present? %>
+  <%  @mybookings.where(status: "accepted").each do |booking| %>
     <div class="booking-card text-center">
       <% @chatroom = Chatroom.find_by(booking_id: booking) %>
       <h4 class="booking-status m-2">You will learn to cook <strong id="color-green"><%=@chatroom.booking.recipe.title%></strong> with <strong id="color-green"><%=@chatroom.recipient_name(current_user)%></strong></h4>
