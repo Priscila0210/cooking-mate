@@ -249,6 +249,7 @@ h4 {
   margin-top: 16px;
   height: 300px;
   border-radius: 8px;
+
 }
 
 .card-trip > img {
@@ -258,13 +259,13 @@ h4 {
 }
 
 .card-trip h2 {
-  font-size: 10px;
+  font-size: 15px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-trip p {
-  font-size: 8px;
+  font-size: 12px;
   opacity: .7;
   margin: 0;
 }
@@ -291,6 +292,11 @@ h4 {
 }
 
 
+.shadow-sm {
+  height: 40px;
+  object-fit: cover;
+}
+
 
 .col-lg-4:hover{
   transform: translateY(-5px);
@@ -311,4 +317,5 @@ h4 {
   // align-items: flex-end;
   // position: relative;
   gap: 1.3rem;
+
 }

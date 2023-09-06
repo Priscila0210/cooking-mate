@@ -14,7 +14,6 @@ class RecipesController < ApplicationController
     if params[:query].present?
       @recipes_result = Recipe.global_search("#{params[:query]}").where.not(user: current_user)
 
-
       if !@recipes_result.empty? && (params[:query].present?)
         respond_to do |format|
           format.html
@@ -33,9 +32,9 @@ class RecipesController < ApplicationController
       respond_to do |format|
         format.html
         format.text { render partial: "recipes/list", locals: {recipes: @recipes_result}, formats: [:html] }
+      end
     end
   end
-end
 
 
   def edit
