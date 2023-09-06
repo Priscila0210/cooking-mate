@@ -67,7 +67,7 @@
  </div>
 
 <% else %>
-  <div class="row justify-content-center" data-controller="search">
+  <div class=" row justify-content-center" data-controller="search">
     <div class="col-sm-8 my-3" >
 
       <%= form_with url: recipes_path, method: :get, html: {class: "d-flex", data: {search_target: "form"}} do %>
@@ -82,7 +82,7 @@
         <%= submit_tag "Search", name: "", class: "btn btn-ghost" %>
       <% end %>
 
-      <div data-action="click->search#filter" data-search-target="button">
+      <div class="mt-2 d-flex align-items-between justify-content-center" data-action="click->search#filter" data-search-target="button">
 
         <button class="btn btn-ghost">Vegetarian</button>
         <button class="btn btn-ghost">Italian</button>
@@ -94,13 +94,15 @@
 
 
     <% if @recipes_result.present?  %>
+    <div class="container" data-search-target="list">
       <%= render partial: "recipes/list", locals: {recipes: @recipes_result, prior_bookings: @prior_bookings} %>
+    </div>
     <% else %>
       <%= render partial: "recipes/empty" %>
     <% end%>
 
   </div>
-
+ <% end%>
 <div class="footer">
   <div class="footer-links">
     <a href="#"><i class="fab fa-github"></i></a>
@@ -113,4 +115,3 @@
     This footer is made by marcel with <i class="fas fa-heart"></i>
   </div>
 </div>
-

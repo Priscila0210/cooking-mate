@@ -2,30 +2,20 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-
         <h6 class="modal-title" id="exampleModalLabel"><%= recipe.user.nickname %></h6>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-          <div class="modal-body">
-  <%= cl_image_tag recipe.user.avatar.key, crop: :fill, class: 'img-circle' %>
-  <div class="text-info">
-    <p>
-    <strong>Nickname:</strong>&nbsp<%= recipe.user.nickname %><br>
-    <strong>Age:</strong>&nbsp<%= recipe.user.age %><br>
-    <strong>Cooking Level:</strong>&nbsp<%= recipe.user.cooking_level %><br>
-    <strong>Interested in:</strong>&nbsp<%= recipe.user.interested_in %><br>
-    <strong>Availability:</strong>&nbsp<%= recipe.user.availability %>
-  </div>
-</div>
-      <p>&nbsp<%= recipe.user.description %></p>
-    </div>
-  </div>
-
-
+      <div class="modal-body">
+        <%= cl_image_tag recipe.user.avatar.key, crop: :fill, class: 'img-circle' %>
+        <div class="text-info">
+          <p>
+          <strong>Nickname:</strong>&nbsp<%= recipe.user.nickname %><br>
+          <strong>Age:</strong>&nbsp<%= recipe.user.age %><br>
+          <strong>Cooking Level:</strong>&nbsp<%= recipe.user.cooking_level %><br>
+          <strong>Interested in:</strong>&nbsp<%= recipe.user.interested_in %><br>
+          <strong>Availability:</strong>&nbsp<%= recipe.user.availability %>
+        </div>
       </div>
-
     </div>
   </div>
 </div>
-
-    
