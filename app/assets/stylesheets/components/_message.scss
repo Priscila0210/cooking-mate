@@ -21,12 +21,12 @@
 }
 
 .sender-style {
-  background-color: #9cc694;
-  color: #fff;
+  background-color: rgba(37, 255, 55, 0.5);
+  color: black;
   align-self: flex-end;
 }
 .receiver-style {
-  background-color: #c69494;
+  background-color: rgba(17, 157, 164, 0.7);
   color: #0c0c0c;
 }
 
@@ -73,7 +73,7 @@ h1 {
 }
 
 .message-input-form button[type="submit"] {
-  background-color: #aecfa8;
+  background-color: #25ff37;
   color: #fff;
   border: none;
   border-radius: 4px;
