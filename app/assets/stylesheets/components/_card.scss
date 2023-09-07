@@ -298,6 +298,17 @@ color: #119DA4;
 }
 
 
+.shadow-sw {
+  height: 50px;
+  object-fit: cover;
+}
+
+.shadow-swa {
+  height: 80px;
+  object-fit: cover;
+}
+
+
 .col-lg-4:hover{
   transform: translateY(-5px);
 }
