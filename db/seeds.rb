@@ -92,28 +92,28 @@ Ingredient.create!(name: "Milk")
 puts "Creating users"
 
 avatar1= URI.open("https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693573270/production/Marcia.jpg")
-user1 = User.new(nickname: "Marcia", email: "marcia@test.com", password: "123456", address: "Barcelona", age: 35, description: Faker::Lorem.paragraph_by_chars(number: 56, supplemental: false), interested_in: "only friends", cooking_level: "beginner", availability: ["weekdays"])
+user1 = User.new(nickname: "Marcia", email: "marcia@test.com", password: "123456", address: "Barcelona", age: 35, description: "First I want to learn new recipes but then who knows...", interested_in: "only friends", cooking_level: "beginner", availability: ["weekdays"])
 user1.avatar.attach(io: avatar1, filename: "Marcia.jpg", content_type: "image/jpg")
 user1.save
 
 
 avatar2= URI.open("https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693831045/production/Gonzalo.jpg")
-user2 = User.create!(nickname: "Gonzalo", email: "gonzalo@test.com", password: "123456", address: "Roma", age: 40, description: Faker::Lorem.paragraph_by_chars(number: 51, supplemental: false), interested_in: "open to anything", cooking_level: "some experience", availability: ["weekdays", "weekend"])
+user2 = User.create!(nickname: "Gonzalo", email: "gonzalo@test.com", password: "123456", address: "Roma", age: 40, description: "I'm a latin guy, hoping to find  the love of my life in the kitchen", interested_in: "open to anything", cooking_level: "some experience", availability: ["weekdays", "weekend"])
 user2.avatar.attach(io: avatar2, filename: "Gonzalo.jpg", content_type: "image/jpg")
 user2.save
 
 avatar3= URI.open("https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693833943/production/Marcel.png")
-user3 = User.create!(nickname: "Marcel", email: "marcel@test.com", password: "123456", address: "Berlin", age: 20, description: Faker::Lorem.paragraph_by_chars(number: 51, supplemental: false), interested_in: "open to anything", cooking_level: "some experience", availability: ["weekend"])
+user3 = User.create!(nickname: "Marcel", email: "marcel@test.com", password: "123456", address: "Berlin", age: 20, description: "I'm learning English, coding and now I want to learn how to cook Burritos", interested_in: "open to anything", cooking_level: "some experience", availability: ["weekend"])
 user3.avatar.attach(io: avatar3, filename: "Marcel.png", content_type: "image/png")
 user3.save
 
 avatar4= URI.open("https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693831601/production/Eduardo.jpg")
-user4 = User.create!(nickname: "Eduardo", email: "eduardo@test.com", password: "123456", address: "Rio de Janeiro", age: 60, description: Faker::Lorem.paragraph_by_chars(number: 51, supplemental: false), interested_in: "only friends", cooking_level: "advanced", availability: ["weekdays", "weekend"])
+user4 = User.create!(nickname: "Eduardo", email: "eduardo@test.com", password: "123456", address: "Rio de Janeiro", age: 60, description: "I'm a lazy guy, tired of ordering food", interested_in: "only friends", cooking_level: "advanced", availability: ["weekdays", "weekend"])
 user4.avatar.attach(io: avatar4, filename: "Eduardo.jpg", content_type: "image/jpg")
 user4.save
 
 avatar5= URI.open("https://res.cloudinary.com/dzltofqgu/image/upload/c_thumb,w_200,g_face/v1693834963/production/Priscila.png")
-user5 = User.create!(nickname: "Priscila", email: "priscila@test.com", password: "123456", address: "Paris", age: 29, description: Faker::Lorem.paragraph_by_chars(number: 51, supplemental: false), interested_in: "open to anything", cooking_level: "beginner", availability: ["weekdays", "weekend"])
+user5 = User.create!(nickname: "Priscila", email: "priscila@test.com", password: "123456", address: "Paris", age: 29, description: "I'm down to earth woman, who loves to explore the culinary world", interested_in: "open to anything", cooking_level: "beginner", availability: ["weekdays", "weekend"])
 user5.avatar.attach(io: avatar5, filename: "Priscila.png", content_type: "image/png")
 user5.save
 
