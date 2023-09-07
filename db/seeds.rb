@@ -84,9 +84,7 @@ Ingredient.create!(name: "Eggplant")
 Ingredient.create!(name: "Carrot")
 Ingredient.create!(name: "Radish")
 Ingredient.create!(name: "Artichoke")
-Ingredient.create!(name: "Eggs")
-Ingredient.create!(name: "Salt")
-Ingredient.create!(name: "Flour")
+Ingredient.create!(name: "Tomato")
 Ingredient.create!(name: "Milk")
 
 puts "Creating users"
