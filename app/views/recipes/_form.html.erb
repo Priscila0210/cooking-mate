@@ -36,6 +36,16 @@
             <%= f.input :level_of_difficulty, collection: ['easy', 'medium', 'hard'], label: 'Difficulty', class: 'form-control' %>
           </div>
 
+          <div class="form-group">
+            <%= f.input :recipes_ingredients,
+                        collection: Ingredient.all,
+                        label: 'Ingredients',
+                        class: 'form-control',
+                        input_html: {multiple: true, data: {controller: "tom-select"}}
+                         %>
+          </div>
+
+
           <div class="d-flex justify-content-between">
             <div class="form-group">
               <%= f.simple_fields_for :recipes_ingredients do |i| %>
@@ -47,7 +57,7 @@
                             item_wrapper_class: 'form-check',
                             include_hidden: false %>
               <% end %>
-            </div>
+            </div>-->
 
             <div class="form-group">
               <%= f.simple_fields_for :recipes_diets do |i| %>

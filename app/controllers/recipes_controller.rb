@@ -48,7 +48,9 @@ class RecipesController < ApplicationController
     @recipe.cuisine = @cuisine
 
     if @recipe.save
-      @ingredient_array = params[:recipe][:recipes_ingredients_attributes]["0"][:ingredient]
+      #@ingredient_array = params[:recipe][:recipes_ingredients_attributes]["0"][:ingredient]
+      @ingredient_array = params[:recipe][:recipes_ingredients]
+      @ingredient_array.delete_at(0) # Get rid of first empty ingredient element
       @ingredient_array.each do |ingredient|
         recipes_ingredient = RecipesIngredient.new
         recipes_ingredient.ingredient = Ingredient.find(ingredient)
@@ -78,7 +80,10 @@ class RecipesController < ApplicationController
 
     # respond_to do |format|
       @user = current_user
-      @recipe.ingredient_ids = params[:recipe][:ingredient_ids]
+
+      # @recipe.ingredient_ids = params[:recipe][:ingredient_ids]
+      @recipe.ingredient_ids = params[:recipe][:recipes_ingredients]
+      @recipe.ingredient_ids.delete_at(0) # get rid of the first empty element of the array.
       @recipe.diet_ids = params[:recipe][:diet_ids]
       @recipe.cuisine_id = params[:recipe][:cuisine]
       if @recipe.update(recipe_params)

@@ -18,8 +18,18 @@
             <%= f.input :description %>
             <%= f.input :cuisine, collection: Cuisine.all, input_html: { selected: recipe.cuisine.id } %>
             <%= f.input :level_of_difficulty, collection: ['easy', 'medium', 'hard'] %>
+
+             <%= f.input :recipes_ingredients,
+                        collection: Ingredient.all,
+                        label: 'Ingredients',
+                        class: 'form-control',
+                        input_html: {multiple: true, data: {controller: "tom-select"}}
+                         %>
+
+            <!--
             <%= f.association :ingredients, collection: Ingredient.all, as: :check_boxes, include_hidden: false,
                       input_html: { multiple: true, selected: recipe.ingredients.pluck(:name) } %>
+            -->
             <%= f.association :diets, collection: Diet.all, as: :check_boxes, include_hidden: false,
                       input_html: { multiple: true, selected: recipe.diets.pluck(:name) } %>
             <div class="form-actions text-center">
