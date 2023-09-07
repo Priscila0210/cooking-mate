@@ -15,7 +15,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+
+
+
+  <% if params[:controller] == "pages" && params[:action] == "dashboard"  %>
+
+  <body class="cooking-bg">
+  <% else %>
+    <body>
+
+  <% end %>
     <div>
       <%= render "shared/navbar" if (current_user) %>
       <%= render "shared/flashes" %>
