@@ -35,7 +35,7 @@
   text-decoration: none;
   font-size: 30px;
   padding: 0px 10px;
-  color:#25FF37;
+  color:#1A7D22;
 
 }
 
@@ -45,7 +45,7 @@
   font-size: 25px;
   padding: 0px 10px;
   padding-bottom: 5px;
-  color: #25FF37;
+  color: #1A7D22;
 
 
 }
@@ -67,16 +67,16 @@
 }
 
 #color {
-  color:#119DA4;
+  color:#2B50AA;
 }
 
 #color-green {
-  color:#25FF37;
+  color:#1A7D22;
 }
 
 .card {
   background-color: #ffffff;
-  border: 1px solid #25FF37;
+  border: 1px solid #1a7d22;
   border-radius: 8px;
   padding: 20px;
   // width: calc(73.33% - 20px); /* Adjust the width and margin as needed */
@@ -88,7 +88,7 @@
 }
 
 .card-title{
-  color:#119DA4;
+  color:#2B50AA;
 }
 
 .card:hover {
@@ -112,7 +112,7 @@
 }
 
 .accordion {
-  background-color: #119DA4;
+  background-color: #2B50AA;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -125,7 +125,7 @@
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
-  background-color: #119DA4;
+  background-color: #2B50AA;
 }
 
 /* Style the accordion panel. Note: hidden by default */
@@ -289,7 +289,7 @@ h4 {
 
 }
 .booked {
-color: #119DA4;
+color: #2B50AA;
 }
 
 .shadow-sm {

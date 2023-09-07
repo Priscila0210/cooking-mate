@@ -12,8 +12,8 @@ body {
 
 .btn-ghost {
 
-  color: #25ff37;
-  border: 1.8px solid #25ff37;
+  color: #1a7d22;
+  border: 1.8px solid #1a7d22;
 
   padding: 8px 24px;
   border-radius: 50px;
@@ -22,24 +22,39 @@ body {
   transition: opacity 0.3s ease;
   // width: 200px;
   margin-left: 0.5rem;
-
-
 }
 
 
 .btn-ghost:hover {
   opacity: 1;
-
-  color:#119DA4;
+  color:#1125a4;
   border: 1px solid;
   /* font-size: 30px; */
+}
 
+.btn-ghost-reverse {
+  color: #1125a4;
+  border: 1.8px solid #1125a4;
+
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  // width: 200px;
+  margin-left: 0.5rem;
+}
+
+.btn-ghost-reverse:hover {
+  opacity: 1;
+  color:#1a7d22;
+  border: 1px solid;
 }
 
 .btn-ghost-solid {
-  color: black;
-  border: 1.8px solid #25ff37;
-  background-color: #25ff37;
+  color: #1125a4;
+  border: 1.8px solid #1a7d22;
+  background-color: #1a7d22;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
@@ -52,8 +67,8 @@ body {
 .btn-ghost-solid:hover {
   opacity: 1;
   border: 1px light !important;
-  background-color:#119DA4;
-  color: #25ff37;
+  background-color:#1125a4;
+  color: #1a7d22;
   /* font-size: 30px; */
 
 }
@@ -87,7 +102,7 @@ body {
 }
 
 title {
-  color: #85E6C5;
+  color: #1125a4;
 }
 
 .card-category {
@@ -206,14 +221,14 @@ title {
   justify-content: space-between;
   height: 100px;
   padding: 0px 50px;
-  color: rgb(103, 237, 114);
+  color: #1a7d22;
 }
 .footer-links {
   display: flex;
   align-items: center;
 }
 .footer-links a {
-  color: rgb(103, 237, 114);
+  color: #1a7d22;
   opacity: 0.15;
   text-decoration: none;
   font-size: 24px;

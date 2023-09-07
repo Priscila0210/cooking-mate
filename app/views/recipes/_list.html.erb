@@ -9,7 +9,7 @@
           <div class="d-flex justify-content-between align-bottom">
             <p> by <%= recipe.user.nickname %></p>
             <div class="d-flex justify-content-between align-items-center">
-              <button type="button" id="small-btn" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#description-<%= recipe.id %>">more</button>
+              <button type="button" id="small-btn" class="btn btn-sm btn-ghost-reverse" data-bs-toggle="modal" data-bs-target="#description-<%= recipe.id %>">more</button>
               <% if @prior_bookings.where(recipe: recipe, user: current_user).count == 0 %>
                 <button type="button" id="small-btn" class="btn btn-sm btn-ghost" data-bs-toggle="modal" data-bs-target="#booking-<%= recipe.id %>">book</button>
               <% else %>
