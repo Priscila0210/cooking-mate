@@ -3,15 +3,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-
         <h5 class="modal-title" id="exampleModalLabel"><%= recipe.title %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">
 
-
-        <%= simple_form_for [current_user, recipe], html: { class: 'modern-form' } do |f| %>
+        <%= simple_form_for [current_user, recipe], html: { class: 'modern-form', style: "width:100%" } do |f| %>
           <%= f.error_notification class: 'alert alert-danger' %>
           <%= f.error_notification message: f.object.errors[:base].to_sentence, class: 'alert alert-danger' if f.object.errors[:base].present? %>
 
@@ -46,18 +44,18 @@
           </div>
 
 
-          <div class="d-flex justify-content-between">
+          <%# <div class="d-flex justify-content-between">
             <div class="form-group">
               <%= f.simple_fields_for :recipes_ingredients do |i| %>
-                <%= i.input :ingredient, collection: Ingredient.all,
+                <%# <%= i.input :ingredient, collection: Ingredient.all,
                             as: :check_boxes,
                             label: 'Ingredients',
                             wrapper_html: { class: 'form-group' },
                             input_html: { class: 'form-check-input' },
                             item_wrapper_class: 'form-check',
                             include_hidden: false %>
-              <% end %>
-            </div>-->
+              <%# <% end %>
+            <%# </div>  %>
 
             <div class="form-group">
               <%= f.simple_fields_for :recipes_diets do |i| %>
@@ -70,14 +68,13 @@
                             include_hidden: false %>
               <% end %>
             </div>
-          </div>
 
           <div class="form-group">
             <%= f.input :photo, as: :file %>
           </div>
 
-          <div class="form-group">
-            <%= f.button :submit, 'Submit', class: 'btn btn-ghost btn-block rounded-pill' %>
+          <div class="form-group text-center">
+            <%= f.button :submit, 'Submit', class: 'btn btn-ghost btn-block rounded-pill border' %>
           </div>
         <% end %>
       </div>
