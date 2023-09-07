@@ -3,10 +3,10 @@
   <% @mybookings.not_declined.each do |booking| %>
     <div class="booking-card" data-controller ="edit-booking" >
       <div>
-        <h4 class="booking-status m-2"><strong id="color-green">Status: </strong><%= booking.status %></h4>
-        <h4 class="booking-status m-2"><strong id="color-green">You are gonna learn:</strong> <%= booking.recipe.title %></h4>
-        <h4 class="booking-status m-2"><strong id="color-green">with:</strong> <%= User.find(booking.recipe.user_id).nickname %></h4>
-        <h4 class="booking-status m-2"><strong id="color-green">on:</strong> <%= booking.date %></h4>
+        <h4 class="booking-status m-2">Status: <strong id="color-green"><%= booking.status %></strong></h4>
+        <h4 class="booking-status m-2">You are gonna learn: <strong id="color-green"> <%= booking.recipe.title %></strong></h4>
+        <h4 class="booking-status m-2">with: <strong id="color-green"><%= User.find(booking.recipe.user_id).nickname %></strong></h4>
+        <h4 class="booking-status m-2">on: <strong id="color-green"><%= booking.date %></strong></h4>
       </div>
 
         <% if !booking.accepted? %>
